@@ -427,8 +427,6 @@ namespace BalanceBeamGui {
 				grdDiagnosisComparison.Children.Add(lbl);
 			}
 
-
-
 			//Load the combined probabilities in the lower triangle
 			for( byte diagnosis1ID = 1; diagnosis1ID < DiagnosisCountInModule; diagnosis1ID++ ) {
 				//Parallel.For(  1, DiagnosisCountInModule,(intDiagnosis1ID ) => {
@@ -476,7 +474,6 @@ namespace BalanceBeamGui {
 		private ResultCollection LoadResultCollection( ) {
 			ResultCollection collection = new ResultCollection(_dtSensitivities, _module);
 			Int32 headerRowOffset = grdFeature.ColumnDefinitions.Count;
-			//foreach( CheckBox item in lstFeature.Items ) {
 			for( Int32 evidenceIndex = 0; evidenceIndex < _dcEvidences.Length; evidenceIndex++ ) {
 				Int32 childIndex = headerRowOffset + evidenceIndex * grdFeature.ColumnDefinitions.Count;
 				CheckBox item = (CheckBox)(grdFeature.Children[childIndex]);
