@@ -28,10 +28,16 @@ namespace Calculation {
             double[] updatedPosteriors = new double[diagnosisCount];
 
             //Load the priors
+            ////double[] priors = DataManager.Priors(_studyArea);
+            //for( Int32 diseaseIndex = 0; diseaseIndex < diagnosisCount; diseaseIndex++ ) {
+            //    dtPosterior.Rows[diseaseIndex][ConstantsCalculation.ColumnNamePrior] = priors[diseaseIndex];
+            //    updatedPosteriors[diseaseIndex] = priors[diseaseIndex];//Load the posterior for the first evidence.
+            //}
+
             //double[] priors = DataManager.Priors(_studyArea);
             for( Int32 diseaseIndex = 0; diseaseIndex < diagnosisCount; diseaseIndex++ ) {
-                dtPosterior.Rows[diseaseIndex][ConstantsCalculation.ColumnNamePrior] = priors[diseaseIndex];
-                updatedPosteriors[diseaseIndex] = priors[diseaseIndex];//Load the posterior for the first evidence.
+                dtPosterior.Rows[diseaseIndex][ConstantsCalculation.ColumnNamePrior] = 1.0;
+                updatedPosteriors[diseaseIndex] = 1.0;
             }
 
             //Update each evidence/column

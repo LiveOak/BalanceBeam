@@ -61,10 +61,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Grinder.cs" />
     <Compile Include="ResultPair.cs" />
-    <Compile Include="BeamDataSet.cs">
-      <DependentUpon>BeamDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="BeamDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

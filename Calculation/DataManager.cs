@@ -19,8 +19,8 @@ namespace Calculation {
             get {
                 if( _ds == null ) {
                     _ds = new BeamDataSet();
-                    LoadChestPainTable(_ds);
-                    LoadPediatricDyspneaTable(_ds);
+                    LoadChestPainTable(_ds, Priors(StudyModule.ChestPain));
+                    LoadPediatricDyspneaTable(_ds, Priors(StudyModule.PediatricDyspnea));
                     InitializePosteriorTable(_ds.tblChestPain, _ds.tblChestPainPosterior);
                     InitializePosteriorTable(_ds.tblPediatricDyspnea, _ds.tblPediatricDyspneaPosterior);
                 }
@@ -138,38 +138,41 @@ namespace Calculation {
                 dtPosterior.Rows.Add(drPosterior);
             }
         }
-        private static void LoadChestPainTable( BeamDataSet ds ) {//, double[] priors
-            //if( priors.Length != 9 ) throw new ArgumentException("The priors array should have the same number of elements as dtSensitivity has rows.");
+        private static void LoadChestPainTable( BeamDataSet ds, double[] priors ) {
+            if( priors.Length != 9 ) throw new ArgumentException("The priors array should have the same number of elements as dtSensitivity has rows.");
           
             //Make sure the primary key value and abbreviations match the enum value and string.
-            ds.tblChestPain.AddtblChestPainRow((byte)1, "MI", 0.97, 0.5, 0.9, 0, 0, 0.9, 0.1, 0, 0.95, 0.05, 0.98, 0, 0.35, 0, 0.05, 0, 0.02, 0.03, 0, 0, 0, 0.05, 0, 0.5, 0.25, 0.35, 0.25, 0.05, 0, 0.25, 0.3, 0.05, 0, 0, 0.05, 0, 0.2, 0.02, 0, 0, 0, 0.2, 0.25, 0, 0, 0.02, 0.1, 0.03, 0.1);
-            ds.tblChestPain.AddtblChestPainRow((byte)2, "ANG", 0.97, 0.5, 0.8, 0.5, 0.4, 0.05, 0.05, 0.05, 0.95, 0, 0.98, 0, 0.15, 0, 0.05, 0, 0.02, 0, 0, 0, 0, 0.3, 0, 0.2, 0.1, 0.05, 0.05, 0.02, 0, 0.05, 0.05, 0.05, 0, 0, 0, 0, 0.05, 0.02, 0, 0, 0, 0.1, 0.1, 0, 0, 0, 0.02, 0.03, 0.1);
-            ds.tblChestPain.AddtblChestPainRow((byte)3, "TAA", 0.97, 0.75, 0.9, 0, 0.08, 0.9, 0.1, 0.6, 0.4, 0, 0.6, 0.4, 0.05, 0.5, 0.05, 0.05, 0.02, 0.03, 0.2, 0, 0, 0, 0, 0.1, 0.2, 0.35, 0.5, 0.02, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.02, 0, 0, 0.2, 0.5, 0.05, 0, 0, 0.1, 0, 0.03, 0.5);
-            ds.tblChestPain.AddtblChestPainRow((byte)4, "PERI", 0.25, 0.5, 0.5, 0, 0.05, 0.85, 0.05, 0.5, 0.5, 0, 0.95, 0, 0.05, 0.05, 0.05, 0, 0.8, 0.03, 0, 0.02, 0.05, 0, 0, 0.1, 0.05, 0, 0, 0, 0.8, 0, 0, 0, 0.05, 0, 0, 0, 0.1, 0, 0, 0.1, 0, 0.5, 0, 0.4, 0, 0, 0.05, 0.03, 0.05);
-            ds.tblChestPain.AddtblChestPainRow((byte)5, "UGI", 0.5, 0.5, 0.4, 0, 0.1, 0.7, 0.2, 0.05, 0.05, 0.9, 0.85, 0.1, 0, 0.1, 0.05, 0, 0.02, 0.5, 0, 0.8, 0, 0, 0, 0.05, 0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1, 0.98, 0, 0, 0, 0.05, 0, 0, 0, 0, 0, 0.03, 0.05);
-            ds.tblChestPain.AddtblChestPainRow((byte)6, "PNEUM", 0.5, 0.5, 0.2, 0, 0.05, 0.7, 0.25, 0.9, 0.1, 0, 0.1, 0.1, 0, 0.05, 0.05, 0.95, 0.9, 0, 0, 0, 0, 0, 0.1, 0.8, 0.2, 0.2, 0.05, 0.05, 0.9, 0.25, 0.9, 0.8, 0.75, 0.02, 0.7, 0, 0.7, 0, 0, 0.25, 0, 0.95, 0.1, 0.05, 0, 0, 0, 0.03, 0.05);
-            ds.tblChestPain.AddtblChestPainRow((byte)7, "PTX", 0.1, 0.6, 0.9, 0.05, 0.35, 0.55, 0.05, 0.95, 0.05, 0, 0.05, 0.05, 0, 0.05, 0.05, 0.85, 0.05, 0, 0.2, 0, 0.1, 0.1, 0, 0.1, 0.9, 0, 0.05, 0.05, 0, 0.05, 0.05, 0.05, 0, 0, 0.8, 0.8, 0.9, 0, 0, 0.2, 0.2, 0.85, 0, 0, 0, 0, 0.2, 0.03, 0.05);
-            ds.tblChestPain.AddtblChestPainRow((byte)8, "MUSC", 0.1, 0.8, 0.9, 0.9, 0.03, 0.03, 0.05, 0.95, 0.05, 0, 0.02, 0.03, 0, 0.1, 0.95, 0, 0.1, 0, 0.1, 0, 0.75, 0.1, 0, 0.1, 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.98, 0.95, 0.05, 0.05, 0, 0, 0, 0, 0, 0.03, 0);
-            ds.tblChestPain.AddtblChestPainRow((byte)9, "PE", 0.8, 0.5, 0.8, 0, 0.05, 0.85, 0.1, 0.5, 0.5, 0, 0.2, 0.1, 0, 0.05, 0.05, 0.95, 0.02, 0, 0, 0, 0.05, 0, 0.4, 0.4, 0.6, 0.35, 0.25, 0.25, 0.2, 0.05, 0.2, 0.05, 0.1, 0.1, 0.1, 0, 0.7, 0, 0, 0.05, 0, 0.4, 0.1, 0, 0.1, 0, 0.2, 0.5, 0.05);
+            ds.tblChestPain.AddtblChestPainRow((byte)1, "MI", priors[0], 0.97, 0.5, 0.9, 0, 0, 0.9, 0.1, 0, 0.95, 0.05, 0.98, 0, 0.35, 0, 0.05, 0, 0.02, 0.03, 0, 0, 0, 0.05, 0, 0.5, 0.25, 0.35, 0.25, 0.05, 0, 0.25, 0.3, 0.05, 0, 0, 0.05, 0, 0.2, 0.02, 0, 0, 0, 0.2, 0.25, 0, 0, 0.02, 0.1, 0.03, 0.1);
+            ds.tblChestPain.AddtblChestPainRow((byte)2, "ANG", priors[1], 0.97, 0.5, 0.8, 0.5, 0.4, 0.05, 0.05, 0.05, 0.95, 0, 0.98, 0, 0.15, 0, 0.05, 0, 0.02, 0, 0, 0, 0, 0.3, 0, 0.2, 0.1, 0.05, 0.05, 0.02, 0, 0.05, 0.05, 0.05, 0, 0, 0, 0, 0.05, 0.02, 0, 0, 0, 0.1, 0.1, 0, 0, 0, 0.02, 0.03, 0.1);
+            ds.tblChestPain.AddtblChestPainRow((byte)3, "TAA", priors[2], 0.97, 0.75, 0.9, 0, 0.08, 0.9, 0.1, 0.6, 0.4, 0, 0.6, 0.4, 0.05, 0.5, 0.05, 0.05, 0.02, 0.03, 0.2, 0, 0, 0, 0, 0.1, 0.2, 0.35, 0.5, 0.02, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.02, 0, 0, 0.2, 0.5, 0.05, 0, 0, 0.1, 0, 0.03, 0.5);
+            ds.tblChestPain.AddtblChestPainRow((byte)4, "PERI", priors[3], 0.25, 0.5, 0.5, 0, 0.05, 0.85, 0.05, 0.5, 0.5, 0, 0.95, 0, 0.05, 0.05, 0.05, 0, 0.8, 0.03, 0, 0.02, 0.05, 0, 0, 0.1, 0.05, 0, 0, 0, 0.8, 0, 0, 0, 0.05, 0, 0, 0, 0.1, 0, 0, 0.1, 0, 0.5, 0, 0.4, 0, 0, 0.05, 0.03, 0.05);
+            ds.tblChestPain.AddtblChestPainRow((byte)5, "UGI", priors[4], 0.5, 0.5, 0.4, 0, 0.1, 0.7, 0.2, 0.05, 0.05, 0.9, 0.85, 0.1, 0, 0.1, 0.05, 0, 0.02, 0.5, 0, 0.8, 0, 0, 0, 0.05, 0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1, 0.98, 0, 0, 0, 0.05, 0, 0, 0, 0, 0, 0.03, 0.05);
+            ds.tblChestPain.AddtblChestPainRow((byte)6, "PNEUM", priors[5], 0.5, 0.5, 0.2, 0, 0.05, 0.7, 0.25, 0.9, 0.1, 0, 0.1, 0.1, 0, 0.05, 0.05, 0.95, 0.9, 0, 0, 0, 0, 0, 0.1, 0.8, 0.2, 0.2, 0.05, 0.05, 0.9, 0.25, 0.9, 0.8, 0.75, 0.02, 0.7, 0, 0.7, 0, 0, 0.25, 0, 0.95, 0.1, 0.05, 0, 0, 0, 0.03, 0.05);
+            ds.tblChestPain.AddtblChestPainRow((byte)7, "PTX", priors[6], 0.1, 0.6, 0.9, 0.05, 0.35, 0.55, 0.05, 0.95, 0.05, 0, 0.05, 0.05, 0, 0.05, 0.05, 0.85, 0.05, 0, 0.2, 0, 0.1, 0.1, 0, 0.1, 0.9, 0, 0.05, 0.05, 0, 0.05, 0.05, 0.05, 0, 0, 0.8, 0.8, 0.9, 0, 0, 0.2, 0.2, 0.85, 0, 0, 0, 0, 0.2, 0.03, 0.05);
+            ds.tblChestPain.AddtblChestPainRow((byte)8, "MUSC", priors[7], 0.1, 0.8, 0.9, 0.9, 0.03, 0.03, 0.05, 0.95, 0.05, 0, 0.02, 0.03, 0, 0.1, 0.95, 0, 0.1, 0, 0.1, 0, 0.75, 0.1, 0, 0.1, 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.98, 0.95, 0.05, 0.05, 0, 0, 0, 0, 0, 0.03, 0);
+            ds.tblChestPain.AddtblChestPainRow((byte)9, "PE", priors[8], 0.8, 0.5, 0.8, 0, 0.05, 0.85, 0.1, 0.5, 0.5, 0, 0.2, 0.1, 0, 0.05, 0.05, 0.95, 0.02, 0, 0, 0, 0.05, 0, 0.4, 0.4, 0.6, 0.35, 0.25, 0.25, 0.2, 0.05, 0.2, 0.05, 0.1, 0.1, 0.1, 0, 0.7, 0, 0, 0.05, 0, 0.4, 0.1, 0, 0.1, 0, 0.2, 0.5, 0.05);
 
-            Int32 priorCount = Priors(StudyModule.ChestPain).Length;
-            Trace.Assert(priorCount == ds.tblChestPain.Rows.Count, "The number of sensitivity rows should match the module's number of priors.");
+            //Int32 priorCount = Priors(StudyModule.ChestPain).Length;
+            //Trace.Assert(priorCount == ds.tblChestPain.Rows.Count, "The number of sensitivity rows should match the module's number of priors.");
         }
-        private static void LoadPediatricDyspneaTable( BeamDataSet ds ) {
+        private static void LoadPediatricDyspneaTable( BeamDataSet ds, double[] priors ) {
+            if( priors.Length != 7 ) throw new ArgumentException("The priors array should have the same number of elements as dtSensitivity has rows.");
+            
             //Make sure the primary key value and abbreviations match the enum value and string.
-            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)1, "CRP", 0.01, 0.95, 0, 0, 1, 0.9, 0, 0.1, 0.2, 0.1, 0.9, 0.8, 0.05, 0.95, 0, 0, 0, 0, 0, 0, 0, 0.9, 0);
-            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)2, "BRON", 1, 0.6, 0, 0, 0, 0.9, 0, 0.1, 1, 0.9, 0.9, 0.2, 0.9, 0, 1, 0.2, 0, 0.9, 0.9, 0.2, 0.75, 0, 0);
-            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)3, "VPN", 0.5, 0.6, 0, 0, 0, 0.7, 0, 0.1, 0.9, 0.9, 0.9, 0.2, 0.9, 0, 0.4, 0.8, 0, 0, 0.4, 1, 0.4, 0, 0);
-            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)4, "BPN", 0.5, 0.6, 0, 0, 0, 0, 0, 0.9, 0.9, 0.2, 0.1, 0.1, 0.2, 0, 0, 0.95, 0.8, 0, 0, 1, 0.4, 0, 0);
-            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)5, "AST", 0.05, 0.9, 0, 0.8, 0, 0.1, 0, 0, 0.75, 0.7, 0.1, 0, 0.5, 0, 0.95, 0.1, 0, 0, 0.9, 0.1, 0.75, 0, 0);
-            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)6, "FB", 0.25, 0.8, 1, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 0, 0, 0.9, 0, 0.25, 0, 0);
-            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)7, "EPIG", 0.2, 0.5, 0.8, 0.8, 0.75, 0.1, 0.8, 0.95, 0.2, 0.2, 0.05, 0.05, 0.05, 0.9, 0.1, 0, 0.75, 0, 0.05, 0, 0, 0, 1);
+            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)1, "CRP", priors[0], 0.01, 0.95, 0, 0, 1, 0.9, 0, 0.1, 0.2, 0.1, 0.9, 0.8, 0.05, 0.95, 0, 0, 0, 0, 0, 0, 0, 0.9, 0);
+            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)2, "BRON", priors[1], 1, 0.6, 0, 0, 0, 0.9, 0, 0.1, 1, 0.9, 0.9, 0.2, 0.9, 0, 1, 0.2, 0, 0.9, 0.9, 0.2, 0.75, 0, 0);
+            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)3, "VPN", priors[2], 0.5, 0.6, 0, 0, 0, 0.7, 0, 0.1, 0.9, 0.9, 0.9, 0.2, 0.9, 0, 0.4, 0.8, 0, 0, 0.4, 1, 0.4, 0, 0);
+            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)4, "BPN", priors[3], 0.5, 0.6, 0, 0, 0, 0, 0, 0.9, 0.9, 0.2, 0.1, 0.1, 0.2, 0, 0, 0.95, 0.8, 0, 0, 1, 0.4, 0, 0);
+            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)5, "AST", priors[4], 0.05, 0.9, 0, 0.8, 0, 0.1, 0, 0, 0.75, 0.7, 0.1, 0, 0.5, 0, 0.95, 0.1, 0, 0, 0.9, 0.1, 0.75, 0, 0);
+            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)6, "FB", priors[5], 0.25, 0.8, 1, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 0, 0.2, 0, 0, 0, 0, 0.9, 0, 0.25, 0, 0);
+            ds.tblPediatricDyspnea.AddtblPediatricDyspneaRow((byte)7, "EPIG", priors[6], 0.2, 0.5, 0.8, 0.8, 0.75, 0.1, 0.8, 0.95, 0.2, 0.2, 0.05, 0.05, 0.05, 0.9, 0.1, 0, 0.75, 0, 0.05, 0, 0, 0, 1);
 
-            Int32 priorCount = Priors(StudyModule.PediatricDyspnea).Length;
-            Trace.Assert(priorCount == ds.tblPediatricDyspnea.Rows.Count, "The number of sensitivity rows should match the module's number of priors.");
+            //Int32 priorCount = Priors(StudyModule.PediatricDyspnea).Length;
+            //Trace.Assert(priorCount == ds.tblPediatricDyspnea.Rows.Count, "The number of sensitivity rows should match the module's number of priors.");
         }
         private static string LongerFeatureNamesForChestPain( string columnName ) {
             switch( columnName ) {
+                case "Prior": return "Prior probability";
                 case "Over40": return "Over 40 years old";
                 case "Male": return "Male";
                 case "SuddenOnset": return "Sudden onset";
@@ -224,6 +227,7 @@ namespace Calculation {
         }
         private static string LongerFeatureNamesForPediatricDyspnea( string columnName ) {
             switch( columnName ) {
+                case "Prior": return "Prior probability";
                 case "HistoryUnder12MonthsOld": return "Age less than 12 months";
                 case "HistoryCoughWorseAtNight": return "Coughing worse at night";
                 case "HistoryCoughSuddenInOnset": return "Cough sudden in onset";
