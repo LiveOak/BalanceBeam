@@ -21,18 +21,15 @@ namespace Calculation {
         }
         #endregion
         #region Public Methods
-        public double[] UpdatePosteriors( ResultCollection results ) {
+        public double[] UpdatePosteriors( ResultCollection results, double[] priors ) {
             DataTable dtPosterior = DataManager.ChooseCorrectTablePosterior(_studyArea);
 
             Int32 diagnosisCount = dtPosterior.Rows.Count;
             double[] updatedPosteriors = new double[diagnosisCount];
 
             //Load the priors
-            double[] priors = DataManager.Priors(_studyArea);
+            //double[] priors = DataManager.Priors(_studyArea);
             for( Int32 diseaseIndex = 0; diseaseIndex < diagnosisCount; diseaseIndex++ ) {
-
-                //DataRow drPosterior = dtPosterior.Rows[diseaseIndex];//Consider: .Rows.Find(diagnosisID);
-                //drPosterior[ConstantsCalculation.ColumnNamePrior] = priors[diseaseIndex];
                 dtPosterior.Rows[diseaseIndex][ConstantsCalculation.ColumnNamePrior] = priors[diseaseIndex];
                 updatedPosteriors[diseaseIndex] = priors[diseaseIndex];//Load the posterior for the first evidence.
             }
@@ -51,8 +48,6 @@ namespace Calculation {
 
             //Load the final posterior values
             for( Int32 diseaseIndex = 0; diseaseIndex < diagnosisCount; diseaseIndex++ ) {
-                //DataRow drSensitivity = dtSensitivity.Rows[diseaseIndex];//Consider: .Rows.Find(diagnosisID);
-                //drSensitivity[ConstantsCalculation.ColumnNamePosterior] = updatedPosteriors[diseaseIndex];
                 dtPosterior.Rows[diseaseIndex][ConstantsCalculation.ColumnNamePosterior] = updatedPosteriors[diseaseIndex];
             }
             return updatedPosteriors;

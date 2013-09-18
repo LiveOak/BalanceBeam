@@ -63,13 +63,16 @@ namespace Calculation {
             DataTable dtDoubleCheck = ChooseCorrectTable(area);
             if( dtDoubleCheck.TableName != dt.TableName ) throw new ArgumentException("The DataTable does not match the module.");
             DataColumn[] columns;
-            if( isPosterior ) columns = new DataColumn[dt.Columns.Count - 4];
+            //if( isPosterior ) columns = new DataColumn[dt.Columns.Count - 4];
+            if( isPosterior ) columns = new DataColumn[dt.Columns.Count - 3];
             else columns = new DataColumn[dt.Columns.Count - 2];
             Int32 tally = 0;
             for( Int32 columnIndex = 0; columnIndex < dt.Columns.Count; columnIndex++ ) {
                 DataColumn dcPossible = dt.Columns[columnIndex];
-                if( dcPossible.ColumnName != ConstantsCalculation.ColumnNameRowID && dcPossible.ColumnName != ConstantsCalculation.ColumnNameDiagnosis
-                    && dcPossible.ColumnName != ConstantsCalculation.ColumnNamePrior && dcPossible.ColumnName != ConstantsCalculation.ColumnNamePosterior ) {
+                if( dcPossible.ColumnName != ConstantsCalculation.ColumnNameRowID 
+                    && dcPossible.ColumnName != ConstantsCalculation.ColumnNameDiagnosis
+                    //&& dcPossible.ColumnName != ConstantsCalculation.ColumnNamePrior 
+                    && dcPossible.ColumnName != ConstantsCalculation.ColumnNamePosterior ) {
 
                     columns[tally] = dcPossible;
                     tally += 1;
@@ -78,20 +81,6 @@ namespace Calculation {
             Trace.Assert(tally == columns.Length, "All but two of the table's columns should be used (all but four if it's the posterior table.");
             return columns;
         }
-        //public static DataColumn[] EvidenceColumns( StudyModule area ) {
-        //   DataTable dt = ChooseCorrectTable(area);
-        //   DataColumn[] columns = new DataColumn[dt.Columns.Count - 2];
-        //   Int32 tally = 0;
-        //   for( Int32 columnIndex = 0; columnIndex < dt.Columns.Count; columnIndex++ ) {
-        //      DataColumn dcPossible = dt.Columns[columnIndex];
-        //      if( dcPossible.ColumnName != ConstantsCalculation.ColumnNameRowID && dcPossible.ColumnName != ConstantsCalculation.ColumnNameDiagnosis ) {
-        //         columns[tally] = dcPossible;
-        //         tally += 1;
-        //      }
-        //   }
-        //   Trace.Assert(tally == columns.Length, "All but two fo the table's columns should be used.");
-        //   return columns;
-        //}
         public static string LongerDiagnosisName( StudyModule module, byte diagnosisID ) {
             switch( module ) {
                 case StudyModule.ChestPain:
@@ -137,26 +126,21 @@ namespace Calculation {
         }
         #endregion
         #region Private Methods
-        private static void InitializePosteriorTable( DataTable dtSensitivity, DataTable dtPosterior ) {
+        private static void InitializePosteriorTable( DataTable dtSensitivity, DataTable dtPosterior ) {//, double[] priors
+            //if( priors.Length != dtSensitivity.Rows.Count ) throw new ArgumentException("The priors array should have the same number of elements as the dtSensitivity has rows.");
             for( byte diagnosisIndex = 0; diagnosisIndex < dtSensitivity.Rows.Count; diagnosisIndex++ ) {
                 DataRow drSensitivity = dtSensitivity.Rows[diagnosisIndex];
                 DataRow drPosterior = dtPosterior.NewRow();
                 drPosterior[ConstantsCalculation.ColumnNameRowID] = drSensitivity[ConstantsCalculation.ColumnNameRowID];
                 drPosterior[ConstantsCalculation.ColumnNameDiagnosis] = drSensitivity[ConstantsCalculation.ColumnNameDiagnosis];
+                //drPosterior[ConstantsCalculation.ColumnNamePrior] = priors[diagnosisIndex];
 
                 dtPosterior.Rows.Add(drPosterior);
             }
-
-            //DataTable dtSensitivity = ds.tblChestPain;
-            //DataTable dtPosterior = ds.tblChestPainPosterior;
-            //foreach(BeamDataSet.tblChestPainRow drSensitivity in dtSensitivity.Rows){
-            //   BeamDataSet.tblChestPainPosteriorRow drPosterior = dtPosterior.NewRowd();
-
-
-            //}
         }
-
-        private static void LoadChestPainTable( BeamDataSet ds ) {
+        private static void LoadChestPainTable( BeamDataSet ds ) {//, double[] priors
+            //if( priors.Length != 9 ) throw new ArgumentException("The priors array should have the same number of elements as dtSensitivity has rows.");
+          
             //Make sure the primary key value and abbreviations match the enum value and string.
             ds.tblChestPain.AddtblChestPainRow((byte)1, "MI", 0.97, 0.5, 0.9, 0, 0, 0.9, 0.1, 0, 0.95, 0.05, 0.98, 0, 0.35, 0, 0.05, 0, 0.02, 0.03, 0, 0, 0, 0.05, 0, 0.5, 0.25, 0.35, 0.25, 0.05, 0, 0.25, 0.3, 0.05, 0, 0, 0.05, 0, 0.2, 0.02, 0, 0, 0, 0.2, 0.25, 0, 0, 0.02, 0.1, 0.03, 0.1);
             ds.tblChestPain.AddtblChestPainRow((byte)2, "ANG", 0.97, 0.5, 0.8, 0.5, 0.4, 0.05, 0.05, 0.05, 0.95, 0, 0.98, 0, 0.15, 0, 0.05, 0, 0.02, 0, 0, 0, 0, 0.3, 0, 0.2, 0.1, 0.05, 0.05, 0.02, 0, 0.05, 0.05, 0.05, 0, 0, 0, 0, 0.05, 0.02, 0, 0, 0, 0.1, 0.1, 0, 0, 0, 0.02, 0.03, 0.1);
@@ -184,8 +168,6 @@ namespace Calculation {
             Int32 priorCount = Priors(StudyModule.PediatricDyspnea).Length;
             Trace.Assert(priorCount == ds.tblPediatricDyspnea.Rows.Count, "The number of sensitivity rows should match the module's number of priors.");
         }
-
-
         private static string LongerFeatureNamesForChestPain( string columnName ) {
             switch( columnName ) {
                 case "Over40": return "Over 40 years old";

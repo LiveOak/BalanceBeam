@@ -108,8 +108,8 @@ namespace BalanceBeamGui {
 		private void Window_Loaded( object sender, RoutedEventArgs e ) {
 			this.WindowState = WindowState.Maximized;
 			InitializeModuleComboBox();
-			_dtSensitivities = DataManager.ChooseCorrectTable(_module);
-			_dcEvidences = DataManager.EvidenceColumns(_module, false, _dtSensitivities);
+            _dtSensitivities = DataManager.ChooseCorrectTable(_module);
+            _dcEvidences = DataManager.EvidenceColumns(_module, false, _dtSensitivities);
 			_grinder = new Grinder(_module);
 			InitializeColors();
 			InitializeFeatureGrid();
@@ -125,8 +125,8 @@ namespace BalanceBeamGui {
 		}
 		private void ResetAfterModuleChanged( ) {
 			_isWindowLoaded = false;
-			_dtSensitivities = DataManager.ChooseCorrectTable(_module);
-			_dcEvidences = DataManager.EvidenceColumns(_module, false, _dtSensitivities);
+            _dtSensitivities = DataManager.ChooseCorrectTable(_module);
+            _dcEvidences = DataManager.EvidenceColumns(_module, false, _dtSensitivities);
 			_grinder = new Grinder(_module);
 			//InitializeColors is not reset;
 			InitializeFeatureGrid();
@@ -164,7 +164,6 @@ namespace BalanceBeamGui {
 			grdFeature.Children.Add(lblHeaderCheckBox);
 
 			Label lblHeaderTorquePositive = new Label();
-			//lblHeaderTorquePositive.Content = "Torque of\nPositive\nResult";
 			lblHeaderTorquePositive.Content = "Impact of\nPositive\nResult";
 			lblHeaderTorquePositive.ToolTip ="Diagnostic impact equals log(LR),\nwhich corresponds to torque on the balance beam.\n\nA positive number corresponds a counter clockwise rotation of the beam,\nand thus to support of the diagnosis on the left side of the beam.";
 			lblHeaderTorquePositive.HorizontalAlignment = HorizontalAlignment.Right;
@@ -172,7 +171,6 @@ namespace BalanceBeamGui {
 			grdFeature.Children.Add(lblHeaderTorquePositive);
 
 			Label lblHeaderTorqueNegative = new Label();
-			//lblHeaderTorqueNegative.Content = "Torque of\nNegative\nResult";
 			lblHeaderTorqueNegative.Content = "Impact of\nNegative\nResult";
 			lblHeaderTorqueNegative.ToolTip = "Diagnostic impact equals log(LR),\nwhich corresponds to torque on the balance beam.\n\nA positive number corresponds a counter clockwise rotation of the beam,\nand thus to support of the diagnosis on the left side of the beam.";
 			lblHeaderTorqueNegative.HorizontalContentAlignment = HorizontalAlignment.Right;
@@ -180,14 +178,12 @@ namespace BalanceBeamGui {
 			grdFeature.Children.Add(lblHeaderTorqueNegative);
 
 			Label lblHeaderEntropyReductionPair = new Label();
-			//lblHeaderEntropyReductionPair.Content = "Entropy\nReduction\nfor Pair";
 			lblHeaderEntropyReductionPair.Content = "Uncertainty\nReduction\nfor Pair";
 			lblHeaderEntropyReductionPair.HorizontalContentAlignment = HorizontalAlignment.Right;
 			Grid.SetColumn(lblHeaderEntropyReductionPair, _grdFeatureEntropyPairColumnIndex);
 			grdFeature.Children.Add(lblHeaderEntropyReductionPair);
 
 			Label lblHeaderEntropyReductionSet = new Label();
-			//lblHeaderEntropyReductionSet.Content = "Entropy\nReduction\nfor Set";
 			lblHeaderEntropyReductionSet.Content = "Uncertainty\nReduction\nfor Set";
 			lblHeaderEntropyReductionSet.HorizontalContentAlignment = HorizontalAlignment.Center;
 			Grid.SetColumn(lblHeaderEntropyReductionSet, _grdFeatureEntropySetColumnIndex);
@@ -376,6 +372,7 @@ namespace BalanceBeamGui {
 			}
 
 			ResultCollection collection = LoadResultCollection();
+            double[] priors = DataManager.Priors(_module);
 			sw.Start();
 
 			//Load the torque in the upper triangle
@@ -406,7 +403,7 @@ namespace BalanceBeamGui {
 
 			//Load the probabilities of each diagnosis in the diagonal.
 			Posterior posterior = new Posterior(_module);
-			double[] posteriorValues = posterior.UpdatePosteriors(collection);
+            double[] posteriorValues = posterior.UpdatePosteriors(collection, priors);
 			double[] suprisals = Posterior.Suprisal(posteriorValues);
 			double[] entropyUncertainties = Posterior.EntropyUncertainties(posteriorValues);
 			double expectedSurprisal = Posterior.ExpectedSuprisal(posteriorValues);
@@ -521,8 +518,9 @@ namespace BalanceBeamGui {
 		private void UpdateEntropies( ) {
 			const string numberFormat = "##.000";//;##.000;--";
 			ResultCollection collection = LoadResultCollection();
+            double[] priors = DataManager.Priors(_module);
 			Posterior posterior = new Posterior(_module);
-			double[] setCurrentProbabilities = posterior.UpdatePosteriors(collection);
+            double[] setCurrentProbabilities = posterior.UpdatePosteriors(collection, priors);
 
 			Int32 headerRowOffset = grdFeature.ColumnDefinitions.Count;
 			const Int32 offsetEntropyPair = _grdFeatureEntropyPairColumnIndex;
@@ -1391,9 +1389,5 @@ namespace BalanceBeamGui {
 			}
 		}
 		#endregion
-
-
-
-
 	}
 }
