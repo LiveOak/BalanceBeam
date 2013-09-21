@@ -1193,6 +1193,22 @@ namespace BalanceBeamGui {
             DrawDiagram();
             FillComparisonGrid();
         }
+        private void btnGrayScale_Click( object sender, RoutedEventArgs e ) {
+            SetComboBoxColor(cboBrushPalette, _brushPaletteDefault);
+            SetComboBoxColor(cboBrushPositiveForeground, new SolidColorBrush(Colors.Black));
+            SetComboBoxColor(cboBrushPositiveBackground, new SolidColorBrush(Colors.Silver));
+            SetComboBoxColor(cboBrushNegativeForeground, new SolidColorBrush(Colors.Black));
+            SetComboBoxColor(cboBrushNegativeBackground, new SolidColorBrush(Colors.Silver));
+            SetComboBoxColor(cboBrushHighlight, new SolidColorBrush(Colors.Black));
+            sldAlphaHighlight.Value = _alphaHighlight;
+            sldAlphaPotential.Value = _alphaPotential;
+
+            if(  _isWindowLoaded ) {
+                DrawDiagram();
+                UpdateFeatureGrid();
+                HighlightSelectedComparison();
+            }
+        }
         private void lblTorquePositiveOrNegative_MouseEnter( object sender, MouseEventArgs e ) {
             DataColumn dc = (DataColumn)((Control)sender).Tag;
             PotentialTorquesShow(dc);
@@ -1207,7 +1223,7 @@ namespace BalanceBeamGui {
             Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
             dlg.FileName = "DxBalanceBeam";
             dlg.DefaultExt = ".bmp";
-            dlg.Filter = "Portable Network Graphics (.bmp)|*.bmp|(.png)|*.png|All files (*.*)|*.*";
+            dlg.Filter = "Windows Bitmap (.bmp)|*.bmp|Portable Network Graphics (.png)|*.png|All files (*.*)|*.*";
             string filename = "";
             if( dlg.ShowDialog() == true ) {
                 filename = dlg.FileName;
@@ -1373,5 +1389,7 @@ namespace BalanceBeamGui {
             }
         }
         #endregion
+
+
     }
 }

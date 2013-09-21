@@ -127,7 +127,7 @@
 		<ComboBox Name="cboModule" HorizontalAlignment="Right" Height="23" Margin="0,27,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cboModule_SelectionChanged" Grid.Row="0" Grid.Column="1" />
 
 
-		<TabControl Name="tabControlLeft" Grid.Column="0" Grid.Row="1" Background="Transparent" Grid.ColumnSpan="3">
+		<TabControl Name="tabControlLeft" Grid.Column="0" Grid.Row="1" Background="Transparent" Grid.ColumnSpan="2">
 			<TabItem Header="Balance Beam" Name="tabBalanceBeam" >
 				<Viewbox Name="viewbox1"  Stretch="Uniform">
 					<Canvas Height="460" Name="canvas1" Width="830" ></Canvas>
@@ -206,7 +206,9 @@
 						<Label Name="lblTopReductions" Content="Top Reductions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
 						<Slider Name="sldTopReductions" Minimum="0" Maximum="9" Value="5" ValueChanged="sldTopReductions_ValueChanged"  SmallChange="1" LargeChange="2" />
 						<CheckBox Name="chkDisplayTotal" Content="Display Total Arrow" IsChecked="True" Margin="10,10,0,10" IsThreeState="False" Click="chkDisplayTotal_Click" />
-						<Button Name="btnDefaultValues" Content="Use Default Values"  Click="btnDefaultValues_Click"/>
+                        <Button Name="btnDefaultValues" Content="Use Default Values"  Click="btnDefaultValues_Click"/>
+                        <Rectangle Fill="#00000000" Height="5"  Width="10"/>
+                        <Button Name="btnGrayScale" Content="Use Gray Scale  Values"  Click="btnGrayScale_Click"/>
 
 					</StackPanel>
 				</ScrollViewer>
