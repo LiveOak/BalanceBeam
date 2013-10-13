@@ -512,6 +512,8 @@ namespace BalanceBeamGui {
                 lblTorquePositive.Content = dr.TorquePositive;
                 Label lblTorqueNegative = (Label)(grdFeature.Children[childIndexTorqueNegative]);
                 lblTorqueNegative.Content = dr.TorqueNegative;
+                if( dr.FeatureName == "Prior" )
+                    lblTorqueNegative.Content = "--";
             }
             UpdateEntropies();
         }
@@ -568,7 +570,7 @@ namespace BalanceBeamGui {
                 Label lblEntropyPair = (Label)(grdFeature.Children[childIndexEntropyPair]);
                 Label lblEntropySet = (Label)(grdFeature.Children[childIndexEntropySet]);
                 //double rawPair = Posterior.ExpectedRawReductionInEntropyUncertainty(pairCurrentProbabilities, pairSensitivitiesForSingleEvidence);
-                if( dr.IsPositiveNull() ) {
+                if( dr.IsPositiveNull() && dr.FeatureName != "Prior" ) {
                     lblEntropyPair.Content = Math.Round(dr.EntropyReductionPair, _roundingDigitsMatrixEntropyReduction).ToString(numberFormat);
                     lblEntropySet.Content = Math.Round(dr.EntropyReductionSet, _roundingDigitsMatrixEntropyReduction).ToString(numberFormat);
                 } else {
@@ -927,7 +929,8 @@ namespace BalanceBeamGui {
             double xNegative = TranslateTorqueToX(torqueNegativeTest, _maxAbsoluteTorque);
             _potentialTorqueLineDown.X1 = xNegative;
             _potentialTorqueLineDown.X2 = _potentialTorqueLineDown.X1;
-            _potentialTorqueLineDown.Visibility = Visibility.Visible;
+            if( dc.ColumnName != "Prior" )
+                _potentialTorqueLineDown.Visibility = Visibility.Visible;
 
             //Up TextBlock
             _potentialTorqueTextUp.Text = dc.ColumnName;
@@ -939,7 +942,8 @@ namespace BalanceBeamGui {
             _potentialTorqueTextDown.Text = dc.ColumnName;
             _potentialTorqueTextDown.ToolTip = string.Format("Potential\n{0}\nTorque: {1}", dc.ColumnName, torqueNegativeTest);
             Canvas.SetLeft(_potentialTorqueTextDown, CanvasRadiusX + xNegative - ArrowLabelOffset);
-            _potentialTorqueTextDown.Visibility = Visibility.Visible;
+            if( dc.ColumnName != "Prior" )
+                _potentialTorqueTextDown.Visibility = Visibility.Visible;
         }
         private void PotentialTorquesHide( ) {
             _potentialTorqueLineUp.Visibility = Visibility.Hidden;
@@ -964,7 +968,7 @@ namespace BalanceBeamGui {
                 textBlock.VerticalAlignment = VerticalAlignment.Bottom;
                 textBlock.SnapsToDevicePixels = true;
 
-                if( !result.PositiveTest.Value ) {
+                if( !result.PositiveTest.Value ) {//&& result.Evidence.ColumnName != "Prior" ) {
                     line.X1 = x;// - arrowRadius;
                     line.X2 = line.X1;
                     line.Y1 = 0;
@@ -1098,6 +1102,9 @@ namespace BalanceBeamGui {
             }
         }
         private void SetCheckBoxColor( CheckBox chk ) {
+            if( chk.Name == "chkPrior" && chk.IsChecked.HasValue && !chk.IsChecked.Value )
+                chk.IsChecked = true;
+                
             if( chk.IsChecked == true ) {
                 chk.Foreground = _brushForegroundPositive;
                 //chk.Background = _brushForegroundPositive;
