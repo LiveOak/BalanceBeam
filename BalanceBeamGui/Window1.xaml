@@ -197,7 +197,8 @@
 						<ComboBox Name="cboBrushNegativeBackground" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushNegativeBackground_SelectionChanged" ></ComboBox>
 						<Label Content="Highlight" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
 						<ComboBox Name="cboBrushHighlight" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged ="cboBrushHighlight_SelectionChanged"	 ></ComboBox>
-						<Slider Name="sldAlphaHighlight" Maximum="255" Value="119" ValueChanged="sldAlphaHighlight_ValueChanged" SmallChange="1" />
+                        <Label Content="Total Arrows Opaqueness" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <Slider Name="sldAlphaHighlight" Maximum="255" Value="119" ValueChanged="sldAlphaHighlight_ValueChanged" SmallChange="1" />
 						<!--<ComboBox Name="cboColorPalette" ItemTemplate="{DynamicResource ColorItemTemplate}" SelectedIndex="0" />-->
 						<Label Content="Hovering Arrows Opaqueness" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
 						<Slider Name="sldAlphaPotential" Maximum="255" Value="119" ValueChanged="sldAlphaPotential_ValueChanged" SmallChange="1" />
