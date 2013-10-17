@@ -222,7 +222,9 @@
                         <Rectangle Fill="#00000000" Height="5"  Width="10"/>
                         <Button Name="btnGrayScale" Content="Use Gray Scale Values" Click="btnGrayScale_Click"/>
 
-					</StackPanel>
+                        <Rectangle Fill="#00000000" Height="5"  Width="10"/>
+                        <Label Name="lblVersion" Content="BBAID Version" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                    </StackPanel>
 				</ScrollViewer>
 			</TabItem>
 		</TabControl>

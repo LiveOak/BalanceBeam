@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Deployment.Application;//To display ClickOnce published version
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.ComponentModel;
+
 using Calculation;
 
 namespace BalanceBeamGui {
@@ -136,6 +138,18 @@ namespace BalanceBeamGui {
             ResetGrdFeature();
             SetDefaultValues();
             LoadExampleCases();
+
+            //System.Deployment.
+            //ApplicationDeployment.IsNetworkDeployed
+            //.ApplicationDeployment
+
+            if( System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed ) {
+                Version versionNumber = ApplicationDeployment.CurrentDeployment.CurrentVersion;
+                lblVersion.Content = string.Format("Published Version:\nv{0}.{1}.{2}.{3}", versionNumber.Major, versionNumber.Minor, versionNumber.Build, versionNumber.Revision);
+            }
+
+            
+            //Click
             _isWindowLoaded = true;
         }
         private void ResetAfterModuleChanged( ) {
