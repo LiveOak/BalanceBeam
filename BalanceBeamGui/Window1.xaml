@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:CALC="clr-namespace:Calculation;assembly=Calculation"
-        Title="Dx Balance Beam" Loaded="Window_Loaded" Icon="/BalanceBeamGui;component/Icon1.ico" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="689" Width="898">
+        Title="Dx Balance Beam" Loaded="Window_Loaded" Icon="/BalanceBeamGui;component/Icon1.ico" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="837" Width="898">
 	<Window.Resources>
 		<!--<CALC:ExampleCases x:Key="exampleCases"    />-->
 		<DataTemplate x:Key="SolidColorTemplate" DataType="{x:Type SolidColorBrush}">
@@ -195,8 +195,8 @@
 						<ComboBox Name="cboBrushNegativeForeground" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushNegativeForeground_SelectionChanged"></ComboBox>
 						<Label Content="Negative Background" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
 						<ComboBox Name="cboBrushNegativeBackground" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushNegativeBackground_SelectionChanged" ></ComboBox>
-						<Label Content="Highlight" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
-						<ComboBox Name="cboBrushHighlight" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged ="cboBrushHighlight_SelectionChanged"	 ></ComboBox>
+                        <Label Content="Highlight" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <ComboBox Name="cboBrushHighlight" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged ="cboBrushHighlight_SelectionChanged"	 ></ComboBox>
                         <Label Content="Total Arrows Opaqueness" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
                         <Slider Name="sldAlphaHighlight" Maximum="255" Value="119" ValueChanged="sldAlphaHighlight_ValueChanged" SmallChange="1" />
 						<!--<ComboBox Name="cboColorPalette" ItemTemplate="{DynamicResource ColorItemTemplate}" SelectedIndex="0" />-->
@@ -207,7 +207,14 @@
 						<Label Name="lblTopReductions" Content="Top Reductions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
 						<Slider Name="sldTopReductions" Minimum="0" Maximum="9" Value="5" ValueChanged="sldTopReductions_ValueChanged"  SmallChange="1" LargeChange="2" />
 						<CheckBox Name="chkDisplayTotal" Content="Display Total Arrow" IsChecked="True" Margin="10,10,0,10" IsThreeState="False" Click="chkDisplayTotal_Click" />
-                        <Button Name="btnDefaultValues" Content="Use Default Values"  Click="btnDefaultValues_Click"/>
+
+                        <Label Content="Deemphasized Text" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <ComboBox Name="cboBrushDeemphasizedText" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushDeemphasizedText_SelectionChanged"></ComboBox>
+                        <Label Content="Balance Beam" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <ComboBox Name="cboBrushBalanceBeam" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushBalanceBeam_SelectionChanged"></ComboBox>
+
+                        <Rectangle Fill="#00000000" Height="10"  Width="10"/>
+                        <Button Name="btnDefaultValues" Content="Use Default Values"    Click="btnDefaultValues_Click"/>
                         <Rectangle Fill="#00000000" Height="5"  Width="10"/>
                         <Button Name="btnGrayScale" Content="Use Gray Scale  Values"  Click="btnGrayScale_Click"/>
 

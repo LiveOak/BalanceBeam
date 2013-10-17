@@ -70,19 +70,14 @@ namespace BalanceBeamGui {
         private SolidColorBrush _brushBackgroundPositive = new SolidColorBrush(Color.FromArgb(255, 166, 206, 227)); //light blue
         private SolidColorBrush _brushForegroundNegative = new SolidColorBrush(Color.FromArgb(255, 227, 26, 28)); // red
         private SolidColorBrush _brushBackgroundNegative = new SolidColorBrush(Color.FromArgb(255, 251, 154, 153)); // pink
-        // private SolidColorBrush _brushHighlight =   new SolidColorBrush(Color.FromArgb(255, 255, 127, 0)); // orange
-        
-        //private SolidColorBrush _brushPalette = Brushes.MintCream;
-        //private SolidColorBrush _brushForegroundPositive = Brushes.Blue;//
-        //private SolidColorBrush _brushBackgroundPositive = Brushes.LightBlue;
-        //private SolidColorBrush _brushForegroundNegative = Brushes.Firebrick;// Coral;
-        //private SolidColorBrush _brushBackgroundNegative = Brushes.LightPink;// LightCoral;
         private SolidColorBrush _brushHighlight = new SolidColorBrush(Color.FromArgb(119, 255, 255, 0));// (SolidColorBrush)(new BrushConverter().ConvertFromString("#77FFFF00"));//LightGoldenrodYellow; //#77FFFF00;//Brushes.Yellow;
+        
+        private SolidColorBrush _brushDeemphasizedText = new SolidColorBrush(Color.FromArgb(255, 189, 189, 189));//Brushes.DarkGray;
+        private SolidColorBrush _brushBalanceBeam = new SolidColorBrush(Color.FromArgb(255, 211, 211, 211));//Brushes.LightGray;
 
         //Fixed
         private SolidColorBrush _brushForegroundHeader = Brushes.Black;
-        private SolidColorBrush _brushDemphasizedText = Brushes.DarkGray;
-        private SolidColorBrush _brushBalanceBeam = Brushes.LightGray;
+        
         private byte _alphaTickMarks = 128; //Ranges from 0 to 255;
         #endregion
         #region Default Cosmetics
@@ -90,11 +85,13 @@ namespace BalanceBeamGui {
         private double _arrowFontSize;
         private double _comparisonFontSize;
         private SolidColorBrush _brushPaletteDefault;
-        private SolidColorBrush _brushForegroundPositiveDefault;//
+        private SolidColorBrush _brushForegroundPositiveDefault;
         private SolidColorBrush _brushBackgroundPositiveDefault;
         private SolidColorBrush _brushForegroundNegativeDefault;
         private SolidColorBrush _brushBackgroundNegativeDefault;
         private SolidColorBrush _brushHighlightDefault;
+        private SolidColorBrush _brushDeemphasizedTextDefault;
+        private SolidColorBrush _brushBalanceBeamDefault;
         private double _alphaHighlight;
         private double _alphaPotential;
         #endregion
@@ -598,12 +595,12 @@ namespace BalanceBeamGui {
                 if( indicesOfMaxEntropyReductionPair.Contains(evidenceIndex) ) lblEntropyPair.FontWeight = FontWeights.Bold;
                 else lblEntropyPair.FontWeight = FontWeights.Normal;
                 if( indicesOfTopFiveEntropyReductionPair.Contains(evidenceIndex) ) lblEntropyPair.Foreground = Brushes.Black;
-                else lblEntropyPair.Foreground = _brushDemphasizedText;
+                else lblEntropyPair.Foreground = _brushDeemphasizedText;
 
                 if( indicesOfMaxEntropyReductionSet.Contains(evidenceIndex) ) lblEntropySet.FontWeight = FontWeights.Bold;
                 else lblEntropySet.FontWeight = FontWeights.Normal;
                 if( indicesOfTopFiveEntropyReductionSet.Contains(evidenceIndex) ) lblEntropySet.Foreground = Brushes.Black;
-                else lblEntropySet.Foreground = _brushDemphasizedText;
+                else lblEntropySet.Foreground = _brushDeemphasizedText;
             }
         }
         private void HighlightSelectedComparison( ) {
@@ -713,6 +710,8 @@ namespace BalanceBeamGui {
             _brushBackgroundPositiveDefault = _brushBackgroundPositive;
             _brushForegroundNegativeDefault = _brushForegroundNegative;
             _brushBackgroundNegativeDefault = _brushBackgroundNegative;
+            _brushDeemphasizedTextDefault = _brushDeemphasizedText;
+            _brushBalanceBeamDefault= _brushBalanceBeam;
             _brushHighlightDefault = _brushHighlight;
             _alphaHighlight = sldAlphaHighlight.Value;
             _alphaPotential = sldAlphaPotential.Value;
@@ -727,6 +726,9 @@ namespace BalanceBeamGui {
             SetComboBoxColor(cboBrushNegativeForeground, _brushForegroundNegativeDefault);
             SetComboBoxColor(cboBrushNegativeBackground, _brushBackgroundNegativeDefault);
             SetComboBoxColor(cboBrushHighlight, _brushHighlightDefault);
+            SetComboBoxColor(cboBrushDeemphasizedText, _brushDeemphasizedTextDefault);
+            SetComboBoxColor(cboBrushBalanceBeam, _brushBalanceBeamDefault);
+
             sldAlphaHighlight.Value = _alphaHighlight;
             sldAlphaPotential.Value = _alphaPotential;
 
@@ -843,7 +845,7 @@ namespace BalanceBeamGui {
 
             Label lblLowerLeft = new Label();
             if( torqueSum < 0 ) lblLowerLeft.FontStyle = FontStyles.Oblique;
-            else lblLowerLeft.Foreground = _brushDemphasizedText;
+            else lblLowerLeft.Foreground = _brushDeemphasizedText;
             lblLowerLeft.Content = Diagnosis1NameShort + " is more favored as the left side dips lower";
             lblLowerLeft.FontSize = FontSizeArrows;
             lblLowerLeft.Padding = new Thickness(0);
@@ -854,7 +856,7 @@ namespace BalanceBeamGui {
 
             Label lblLowerRight = new Label();
             if( torqueSum > 0 ) lblLowerRight.FontStyle = FontStyles.Oblique;
-            else lblLowerRight.Foreground = _brushDemphasizedText;
+            else lblLowerRight.Foreground = _brushDeemphasizedText;
             lblLowerRight.Content = Diagnosis2NameShort + " is more favored as the right side dips lower";
             lblLowerRight.FontSize = FontSizeArrows;
             lblLowerRight.Padding = new Thickness(0);
@@ -1057,7 +1059,7 @@ namespace BalanceBeamGui {
             lblUp.Text = "Total Torque";
             if( isArrowLocationClipped ) lblUp.Text += " (location is clipped)";
             lblUp.ToolTip = toolTipString;
-            lblUp.Foreground = new SolidColorBrush(ChangeTransparency(_brushDemphasizedText.Color, alpha));
+            lblUp.Foreground = new SolidColorBrush(ChangeTransparency(_brushDeemphasizedText.Color, alpha));
             lblUp.FontSize = FontSizeArrows;
             lblUp.VerticalAlignment = VerticalAlignment.Bottom;
             lblUp.SnapsToDevicePixels = true;
@@ -1072,7 +1074,7 @@ namespace BalanceBeamGui {
             lblDown.Text = "Total Torque";
             if( isArrowLocationClipped ) lblDown.Text += " (location is clipped)";
             lblDown.ToolTip = toolTipString;
-            lblDown.Foreground = new SolidColorBrush(ChangeTransparency(_brushDemphasizedText.Color, alpha));
+            lblDown.Foreground = new SolidColorBrush(ChangeTransparency(_brushDeemphasizedText.Color, alpha));
             lblDown.FontSize = FontSizeArrows;
             lblDown.VerticalAlignment = VerticalAlignment.Bottom;
             lblDown.SnapsToDevicePixels = true;
@@ -1091,7 +1093,7 @@ namespace BalanceBeamGui {
                     control.Foreground = _brushForegroundHeader;
                     control.FontWeight = FontWeights.Bold;
                 } else {
-                    control.Foreground = _brushDemphasizedText;//_brushForegroundMissing;
+                    control.Foreground = _brushDeemphasizedText;//_brushForegroundMissing;
                     control.FontWeight = FontWeights.Normal;
                 }
                 if( control.GetType() == typeof(CheckBox) ) {
@@ -1126,8 +1128,8 @@ namespace BalanceBeamGui {
                 chk.Foreground = _brushForegroundNegative;
                 //chk.Background = _brushForegroundNegative;
             } else {
-                chk.Foreground = _brushDemphasizedText;//_brushForegroundMissing;
-                //chk.Background = _brushDemphasizedText;//_brushForegroundMissing;
+                chk.Foreground = _brushDeemphasizedText;//_brushForegroundMissing;
+                //chk.Background = _brushDeemphasizedText;//_brushForegroundMissing;
             }
             SetGrdFeatureTorqueLabel(chk);
         }
@@ -1141,17 +1143,17 @@ namespace BalanceBeamGui {
             FontWeight weightLabelNegative;
             if( isChecked == true ) {
                 colorLabelPositive = _brushForegroundPositive;
-                colorLabelNegative = _brushDemphasizedText;//_brushForegroundMissing;
+                colorLabelNegative = _brushDeemphasizedText;//_brushForegroundMissing;
                 weightLabelPositive = FontWeights.Heavy;
                 weightLabelNegative = FontWeights.UltraLight;
             } else if( isChecked == false ) {
-                colorLabelPositive = _brushDemphasizedText;//_brushForegroundMissing;
+                colorLabelPositive = _brushDeemphasizedText;//_brushForegroundMissing;
                 colorLabelNegative = _brushForegroundNegative;
                 weightLabelPositive = FontWeights.UltraLight;
                 weightLabelNegative = FontWeights.Heavy;
             } else {
-                colorLabelPositive = _brushDemphasizedText;//_brushForegroundMissing;
-                colorLabelNegative = _brushDemphasizedText;//_brushForegroundMissing;
+                colorLabelPositive = _brushDeemphasizedText;//_brushForegroundMissing;
+                colorLabelNegative = _brushDeemphasizedText;//_brushForegroundMissing;
                 weightLabelPositive = FontWeights.Normal;
                 weightLabelNegative = FontWeights.Normal;
             }
@@ -1221,6 +1223,8 @@ namespace BalanceBeamGui {
             SetComboBoxColor(cboBrushNegativeForeground, new SolidColorBrush(Colors.Black));
             SetComboBoxColor(cboBrushNegativeBackground, new SolidColorBrush(Colors.Silver));
             SetComboBoxColor(cboBrushHighlight, new SolidColorBrush(Colors.Black));
+            SetComboBoxColor(cboBrushDeemphasizedText, new SolidColorBrush(Colors.Gray));
+            SetComboBoxColor(cboBrushBalanceBeam, new SolidColorBrush(Colors.LightGray));
             sldAlphaHighlight.Value = _alphaHighlight;
             sldAlphaPotential.Value = _alphaPotential;
 
@@ -1277,6 +1281,8 @@ namespace BalanceBeamGui {
             InitializeColorComboxBox(cboBrushNegativeForeground, _brushForegroundNegative);
             InitializeColorComboxBox(cboBrushNegativeBackground, _brushBackgroundNegative);
             InitializeColorComboxBox(cboBrushHighlight, _brushHighlight);
+            InitializeColorComboxBox(cboBrushDeemphasizedText, _brushDeemphasizedText);
+            InitializeColorComboxBox(cboBrushBalanceBeam, _brushBalanceBeam);
 
         }
         private void InitializeColorComboxBox( ComboBox cbo, SolidColorBrush desiredBrush ) {
@@ -1359,6 +1365,14 @@ namespace BalanceBeamGui {
         private void sldTopReductions_ValueChanged( object sender, RoutedPropertyChangedEventArgs<double> e ) {
             lblTopReductions.Content = String.Format("Top Reductions Highlighted: {0}", (Int32)sldTopReductions.Value);
         }
+        private void cboBrushDeemphasizedText_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
+            _brushDeemphasizedText = (SolidColorBrush)cboBrushDeemphasizedText.SelectedItem;
+            if( _isWindowLoaded ) DrawDiagram();
+        }
+        private void cboBrushBalanceBeam_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
+            _brushBalanceBeam= (SolidColorBrush)cboBrushBalanceBeam.SelectedItem;
+            if( _isWindowLoaded ) DrawDiagram();
+        }
         #endregion
         #region Development/Temporary Methods
         //private void PrintTemplateForLongerFeatures( ) {
@@ -1411,6 +1425,9 @@ namespace BalanceBeamGui {
         }
         #endregion
 
+
+
+  
 
     }
 }
