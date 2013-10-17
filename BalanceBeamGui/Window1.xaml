@@ -212,11 +212,15 @@
                         <ComboBox Name="cboBrushDeemphasizedText" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushDeemphasizedText_SelectionChanged"></ComboBox>
                         <Label Content="Balance Beam" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
                         <ComboBox Name="cboBrushBalanceBeam" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushBalanceBeam_SelectionChanged"></ComboBox>
+                        <Label Content="Diagonal Selected" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <ComboBox Name="cboBrushDiagonalSelected" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushDiagonalSelected_SelectionChanged"></ComboBox>
+                        <Label Content="Diagonal Not Selected" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <ComboBox Name="cboBrushDiagonalNotSelected" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushDiagonalNotSelected_SelectionChanged"></ComboBox>
 
                         <Rectangle Fill="#00000000" Height="10"  Width="10"/>
-                        <Button Name="btnDefaultValues" Content="Use Default Values"    Click="btnDefaultValues_Click"/>
+                        <Button Name="btnDefaultValues" Content="Use Default Values" Click="btnDefaultValues_Click"/>
                         <Rectangle Fill="#00000000" Height="5"  Width="10"/>
-                        <Button Name="btnGrayScale" Content="Use Gray Scale  Values"  Click="btnGrayScale_Click"/>
+                        <Button Name="btnGrayScale" Content="Use Gray Scale Values" Click="btnGrayScale_Click"/>
 
 					</StackPanel>
 				</ScrollViewer>

@@ -71,13 +71,14 @@ namespace BalanceBeamGui {
         private SolidColorBrush _brushForegroundNegative = new SolidColorBrush(Color.FromArgb(255, 227, 26, 28)); // red
         private SolidColorBrush _brushBackgroundNegative = new SolidColorBrush(Color.FromArgb(255, 251, 154, 153)); // pink
         private SolidColorBrush _brushHighlight = new SolidColorBrush(Color.FromArgb(119, 255, 255, 0));// (SolidColorBrush)(new BrushConverter().ConvertFromString("#77FFFF00"));//LightGoldenrodYellow; //#77FFFF00;//Brushes.Yellow;
-        
         private SolidColorBrush _brushDeemphasizedText = new SolidColorBrush(Color.FromArgb(255, 189, 189, 189));//Brushes.DarkGray;
         private SolidColorBrush _brushBalanceBeam = new SolidColorBrush(Color.FromArgb(255, 211, 211, 211));//Brushes.LightGray;
+        private SolidColorBrush _brushDiagonalSelected = Brushes.Blue;
+        private SolidColorBrush _brushDiagonalNotSelected = Brushes.CadetBlue;
+        //Note to Jay: the gray scale colors are defined below in `btnGrayScale_Click`
 
-        //Fixed
+        //Fixed Values, that aren't customizable by the user
         private SolidColorBrush _brushForegroundHeader = Brushes.Black;
-        
         private byte _alphaTickMarks = 128; //Ranges from 0 to 255;
         #endregion
         #region Default Cosmetics
@@ -92,6 +93,9 @@ namespace BalanceBeamGui {
         private SolidColorBrush _brushHighlightDefault;
         private SolidColorBrush _brushDeemphasizedTextDefault;
         private SolidColorBrush _brushBalanceBeamDefault;
+        private SolidColorBrush _brushDiagonalSelectedDefault;
+        private SolidColorBrush _brushDiagonalNotSelectedDefault;
+        
         private double _alphaHighlight;
         private double _alphaPotential;
         #endregion
@@ -594,17 +598,17 @@ namespace BalanceBeamGui {
 
                 if( indicesOfMaxEntropyReductionPair.Contains(evidenceIndex) ) lblEntropyPair.FontWeight = FontWeights.Bold;
                 else lblEntropyPair.FontWeight = FontWeights.Normal;
-                if( indicesOfTopFiveEntropyReductionPair.Contains(evidenceIndex) ) lblEntropyPair.Foreground = Brushes.Black;
+                if( indicesOfTopFiveEntropyReductionPair.Contains(evidenceIndex) ) lblEntropyPair.Foreground = _brushForegroundHeader;
                 else lblEntropyPair.Foreground = _brushDeemphasizedText;
 
                 if( indicesOfMaxEntropyReductionSet.Contains(evidenceIndex) ) lblEntropySet.FontWeight = FontWeights.Bold;
                 else lblEntropySet.FontWeight = FontWeights.Normal;
-                if( indicesOfTopFiveEntropyReductionSet.Contains(evidenceIndex) ) lblEntropySet.Foreground = Brushes.Black;
+                if( indicesOfTopFiveEntropyReductionSet.Contains(evidenceIndex) ) lblEntropySet.Foreground = _brushForegroundHeader;
                 else lblEntropySet.Foreground = _brushDeemphasizedText;
             }
         }
         private void HighlightSelectedComparison( ) {
-            Brush brushLowCombinedPosterior = Brushes.LightGray;
+            Brush brushLowCombinedPosterior = _brushDeemphasizedText;
             double posteriorThreshold = sldPosteriorThreshold.Value;
             bool isUpperSelected = _diagnosisID1 <= _diagnosisID2;
             if( isUpperSelected ) {
@@ -629,7 +633,7 @@ namespace BalanceBeamGui {
                     Int32 gridRowIndex = Grid.GetRow(lbl);
                     Int32 gridColumnIndex = Grid.GetColumn(lbl);
                     lbl.Background = Brushes.Transparent;
-                    lbl.Foreground = Brushes.Black;
+                    lbl.Foreground = _brushForegroundHeader;
                     lbl.FontWeight = FontWeights.Normal;
                     lbl.BorderThickness = new Thickness(1);
                     lbl.BorderBrush = Brushes.Transparent;
@@ -648,12 +652,12 @@ namespace BalanceBeamGui {
 
                         if( (tag[0] == _diagnosisID1 && tag[1] == _diagnosisID2) || (tag[0] == _diagnosisID2 && tag[1] == _diagnosisID1) ) {
                             lbl.Background = _brushHighlight;
-                            if( isCellTorque == isUpperSelected ) lbl.BorderBrush = Brushes.DarkBlue;//Border only the selected cell in the correct triagonle.
+                            if( isCellTorque == isUpperSelected ) lbl.BorderBrush = _brushForegroundHeader;//Border only the selected cell in the correct triangle (of the matrix.                            
                         } else if( tag[0] == tag[1] ) {
-                            lbl.Background = Brushes.CadetBlue;
-                            lbl.Foreground = Brushes.AntiqueWhite;
+                            lbl.Background = _brushDiagonalNotSelected;
+                            lbl.Foreground = _brushDeemphasizedText;
                             if( tag[0] == _diagnosisID1 || tag[1] == _diagnosisID2 ) {
-                                lbl.Background = Brushes.Blue;
+                                lbl.Background = _brushDiagonalSelected;
                             }
                         } else if( !isRowEven && isCellTorque ) {
                             lbl.Background = (Brush)Resources["GradientBrushTorque"];
@@ -711,7 +715,9 @@ namespace BalanceBeamGui {
             _brushForegroundNegativeDefault = _brushForegroundNegative;
             _brushBackgroundNegativeDefault = _brushBackgroundNegative;
             _brushDeemphasizedTextDefault = _brushDeemphasizedText;
-            _brushBalanceBeamDefault= _brushBalanceBeam;
+            _brushBalanceBeamDefault = _brushBalanceBeam;
+            _brushDiagonalSelectedDefault = _brushDiagonalSelected;
+            _brushDiagonalNotSelectedDefault = _brushDiagonalNotSelected;
             _brushHighlightDefault = _brushHighlight;
             _alphaHighlight = sldAlphaHighlight.Value;
             _alphaPotential = sldAlphaPotential.Value;
@@ -728,6 +734,8 @@ namespace BalanceBeamGui {
             SetComboBoxColor(cboBrushHighlight, _brushHighlightDefault);
             SetComboBoxColor(cboBrushDeemphasizedText, _brushDeemphasizedTextDefault);
             SetComboBoxColor(cboBrushBalanceBeam, _brushBalanceBeamDefault);
+            SetComboBoxColor(cboBrushDiagonalSelected, _brushDiagonalSelectedDefault);
+            SetComboBoxColor(cboBrushDiagonalNotSelected, _brushDiagonalNotSelectedDefault);
 
             sldAlphaHighlight.Value = _alphaHighlight;
             sldAlphaPotential.Value = _alphaPotential;
@@ -1218,13 +1226,15 @@ namespace BalanceBeamGui {
         }
         private void btnGrayScale_Click( object sender, RoutedEventArgs e ) {
             SetComboBoxColor(cboBrushPalette, _brushPaletteDefault);
-            SetComboBoxColor(cboBrushPositiveForeground, new SolidColorBrush(Colors.Black));
+            SetComboBoxColor(cboBrushPositiveForeground, new SolidColorBrush(Colors.Black));  //Jay, if you'd like, replace these colors with something like: new SolidColorBrush(Color.FromArgb(255, 31, 120, 180)); //dark blue
             SetComboBoxColor(cboBrushPositiveBackground, new SolidColorBrush(Colors.Silver));
             SetComboBoxColor(cboBrushNegativeForeground, new SolidColorBrush(Colors.Black));
             SetComboBoxColor(cboBrushNegativeBackground, new SolidColorBrush(Colors.Silver));
             SetComboBoxColor(cboBrushHighlight, new SolidColorBrush(Colors.Black));
             SetComboBoxColor(cboBrushDeemphasizedText, new SolidColorBrush(Colors.Gray));
             SetComboBoxColor(cboBrushBalanceBeam, new SolidColorBrush(Colors.LightGray));
+            SetComboBoxColor(cboBrushDiagonalSelected, new SolidColorBrush(Colors.Gray));
+            SetComboBoxColor(cboBrushDiagonalNotSelected, new SolidColorBrush(Colors.LightGray));
             sldAlphaHighlight.Value = _alphaHighlight;
             sldAlphaPotential.Value = _alphaPotential;
 
@@ -1283,7 +1293,8 @@ namespace BalanceBeamGui {
             InitializeColorComboxBox(cboBrushHighlight, _brushHighlight);
             InitializeColorComboxBox(cboBrushDeemphasizedText, _brushDeemphasizedText);
             InitializeColorComboxBox(cboBrushBalanceBeam, _brushBalanceBeam);
-
+            InitializeColorComboxBox(cboBrushDiagonalSelected, _brushDiagonalSelected);
+            InitializeColorComboxBox(cboBrushDiagonalNotSelected, _brushDiagonalNotSelected);
         }
         private void InitializeColorComboxBox( ComboBox cbo, SolidColorBrush desiredBrush ) {
             foreach( Color color in _allPossibleColors ) {
@@ -1366,12 +1377,28 @@ namespace BalanceBeamGui {
             lblTopReductions.Content = String.Format("Top Reductions Highlighted: {0}", (Int32)sldTopReductions.Value);
         }
         private void cboBrushDeemphasizedText_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
-            _brushDeemphasizedText = (SolidColorBrush)cboBrushDeemphasizedText.SelectedItem;
-            if( _isWindowLoaded ) DrawDiagram();
+            if( _isWindowLoaded ) {
+                DrawDiagram();
+                FillComparisonGrid();
+            }
         }
         private void cboBrushBalanceBeam_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
             _brushBalanceBeam= (SolidColorBrush)cboBrushBalanceBeam.SelectedItem;
             if( _isWindowLoaded ) DrawDiagram();
+        }
+        private void cboBrushDiagonalSelected_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
+            _brushDiagonalSelected = (SolidColorBrush)cboBrushDiagonalSelected.SelectedItem;
+            if( _isWindowLoaded ) {
+                DrawDiagram();
+                FillComparisonGrid();
+            }
+        }
+        private void cboBrushDiagonalNotSelected_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
+            _brushDiagonalNotSelected = (SolidColorBrush)cboBrushDiagonalNotSelected.SelectedItem;
+            if( _isWindowLoaded ) {
+                DrawDiagram();
+                FillComparisonGrid();
+            }
         }
         #endregion
         #region Development/Temporary Methods
@@ -1424,10 +1451,5 @@ namespace BalanceBeamGui {
             }
         }
         #endregion
-
-
-
-  
-
     }
 }
