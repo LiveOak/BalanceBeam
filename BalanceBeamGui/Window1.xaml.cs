@@ -73,9 +73,15 @@ namespace BalanceBeamGui {
         private SolidColorBrush _brushForegroundNegative = new SolidColorBrush(Color.FromArgb(255, 227, 26, 28)); // red
         private SolidColorBrush _brushBackgroundNegative = new SolidColorBrush(Color.FromArgb(255, 251, 154, 153)); // pink
         private SolidColorBrush _brushHighlight = new SolidColorBrush(Color.FromArgb(119, 255, 255, 0));// (SolidColorBrush)(new BrushConverter().ConvertFromString("#77FFFF00"));//LightGoldenrodYellow; //#77FFFF00;//Brushes.Yellow;
+        // change to DeemphasizedText text default color for readability - Jay 102413 
+        // private SolidColorBrush _brushDeemphasizedText = new SolidColorBrush(Color.FromArgb(255, 150, 150, 150));//#FF969696;
         private SolidColorBrush _brushDeemphasizedText = new SolidColorBrush(Color.FromArgb(255, 189, 189, 189));//Brushes.DarkGray;
         private SolidColorBrush _brushBalanceBeam = new SolidColorBrush(Color.FromArgb(255, 211, 211, 211));//Brushes.LightGray;
+        // change to DiagonalSelected text default color for readability - Jay 102413 
+        // private SolidColorBrush _brushDiagonalSelected = new SolidColorBrush(Color.FromArgb(255, 0, 255, 127));//#FF00FF7F light green
         private SolidColorBrush _brushDiagonalSelected = Brushes.Blue;
+        // change to burshDiagonalNotSelected text default color for readability - Jay 102413
+        // private SolidColorBrush _brushDiagonalNotSelected = new SolidColorBrush(Color.FromArgb(255, 189, 189, 189));//#FFDBDBDB light gray
         private SolidColorBrush _brushDiagonalNotSelected = Brushes.CadetBlue;
         //Note to Jay: the gray scale colors are defined below in `btnGrayScale_Click`
 
@@ -1241,12 +1247,22 @@ namespace BalanceBeamGui {
         private void btnGrayScale_Click( object sender, RoutedEventArgs e ) {
             SetComboBoxColor(cboBrushPalette, _brushPaletteDefault);
             SetComboBoxColor(cboBrushPositiveForeground, new SolidColorBrush(Colors.Black));  //Jay, if you'd like, replace these colors with something like: new SolidColorBrush(Color.FromArgb(255, 31, 120, 180)); //dark blue
+            // change to PositiveBackground text grayscale default color for readability - Jay 102413 
+            // SetComboBoxColor(cboBrushPositiveBackground, new SolidColorBrush(Color.FromArgb(255, 150, 150, 150));//FF969696 darker gray            
             SetComboBoxColor(cboBrushPositiveBackground, new SolidColorBrush(Colors.Silver));
             SetComboBoxColor(cboBrushNegativeForeground, new SolidColorBrush(Colors.Black));
+            // change to NegativeBackground text grayscale default color for readability - Jay 102413 
+            // SetComboBoxColor(cboBrushNegativeBackground, new SolidColorBrush(Color.FromArgb(255, 240, 240, 240));//FFF0F0F0 light gray
             SetComboBoxColor(cboBrushNegativeBackground, new SolidColorBrush(Colors.Silver));
+            // change to Highlight text grayscale default color for readability - Jay 102413             
+            // SetComboBoxColor(cboBrushHighlight, new SolidColorBrush(Color.FromArgb(255, 115, 115, 115));//FF737373 dark gray
             SetComboBoxColor(cboBrushHighlight, new SolidColorBrush(Colors.Black));
+            // change to DeemphasizedText text grayscale default color for readability - Jay 102413             
+            // SetComboBoxColor(cboBrushDeemphasizedText, new SolidColorBrush(Color.FromArgb(255, 240, 240, 240));//FFF0F0F0 light gray
             SetComboBoxColor(cboBrushDeemphasizedText, new SolidColorBrush(Colors.Gray));
             SetComboBoxColor(cboBrushBalanceBeam, new SolidColorBrush(Colors.LightGray));
+            // change to DiagonalSelected text grayscale default color for readability - Jay 102413             
+            // SetComboBoxColor(cboBrushDiagonalSelected, new SolidColorBrush(Color.FromArgb(255, 150, 150, 150));//FF969696 darker gray
             SetComboBoxColor(cboBrushDiagonalSelected, new SolidColorBrush(Colors.Gray));
             SetComboBoxColor(cboBrushDiagonalNotSelected, new SolidColorBrush(Colors.LightGray));
             sldAlphaHighlight.Value = _alphaHighlight;
