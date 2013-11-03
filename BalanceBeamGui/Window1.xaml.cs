@@ -144,7 +144,7 @@ namespace BalanceBeamGui {
                 lblVersion.Content = string.Format("Published Version:\nv{0}.{1}.{2}.{3}", versionNumber.Major, versionNumber.Minor, versionNumber.Build, versionNumber.Revision);
             }
 
-            
+
             //Click
             _isWindowLoaded = true;
         }
@@ -679,12 +679,12 @@ namespace BalanceBeamGui {
             //lblCurrentDiagnoses.Content = string.Format("Diagnosis 1: {0} vs Diagnosis 2: {1}:  Odds are {2} (for {0} to {1})", _diagnosis1.ToString(), _diagnosis2.ToString(), oddsString);
             string diagnosis1LongName = DataManager.LongerDiagnosisName(_module, _diagnosisID1);
             string diagnosis2LongName = DataManager.LongerDiagnosisName(_module, _diagnosisID2);
-            lblCurrentDiagnoses.Content = string.Format("Naive Odds for [{1}] to [{2}] are {0}", oddsString, diagnosis1LongName, diagnosis2LongName);
+            lblCurrentDiagnoses.Content = string.Format("Naive Bayesian Odds for [{1}] to [{2}] are {0}", oddsString, diagnosis1LongName, diagnosis2LongName);
 
             switch( Math.Sign(torqueSum) ) {
-                case 1: lblLeverageSum.Content = string.Format("Naive Torque: {0} (which favors {1} over {2})", Math.Round(torqueSum, _roundingDigitsToolTips), Diagnosis2NameShort, Diagnosis1NameShort); break;
-                case -1: lblLeverageSum.Content = string.Format("Naive Torque: {0} (which favors {1} over {2})", Math.Round(torqueSum, _roundingDigitsToolTips), Diagnosis1NameShort, Diagnosis2NameShort); break;
-                default: lblLeverageSum.Content = string.Format("Naive Torque: {0} (which favors both diagnoses equally)", Math.Round(torqueSum, _roundingDigitsToolTips)); break;
+                case 1: lblLeverageSum.Content = string.Format("Torque: {0} (which favors {1} over {2})", Math.Round(torqueSum, _roundingDigitsToolTips), Diagnosis2NameShort, Diagnosis1NameShort); break;
+                case -1: lblLeverageSum.Content = string.Format("Torque: {0} (which favors {1} over {2})", Math.Round(torqueSum, _roundingDigitsToolTips), Diagnosis1NameShort, Diagnosis2NameShort); break;
+                default: lblLeverageSum.Content = string.Format("Torque: {0} (which favors both diagnoses equally)", Math.Round(torqueSum, _roundingDigitsToolTips)); break;
             }
         }
         private void SaveImage( string filename ) {//http://www.vistax64.com/avalon/103701-using-wpf-generate-image.html
@@ -1240,9 +1240,10 @@ namespace BalanceBeamGui {
             sldAlphaPotential.Value = _alphaPotential;
 
             if( _isWindowLoaded ) {
+                HighlightSelectedComparison();
                 DrawDiagram();
                 UpdateFeatureGrid();
-                HighlightSelectedComparison();
+                ResetGrdFeature(true);
             }
         }
         private void lblTorquePositiveOrNegative_MouseEnter( object sender, MouseEventArgs e ) {
@@ -1383,7 +1384,7 @@ namespace BalanceBeamGui {
                 DrawDiagram();
                 FillComparisonGrid();
                 //UpdateFeatureGrid();
-                ResetGrdFeature(true);    
+                ResetGrdFeature(true);
             }
         }
         private void cboBrushBalanceBeam_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
