@@ -163,7 +163,7 @@
         <StackPanel Grid.Row="2" Grid.Column="0" Name="stackPanel1" Orientation="Horizontal" Grid.ColumnSpan="2">
             <Grid Name="grdDiagnosisComparison" ShowGridLines="False"/>
         </StackPanel>
-        <TabControl Name="tabControlRight" Grid.Column="2"  Grid.Row="0" Grid.RowSpan="3"  Background="#FFEFEFFF" >
+        <TabControl Name="tabControlRight" Grid.Column="2"  Grid.Row="0" Grid.RowSpan="3"  Background="White" >
             <TabItem Header="Features" Name="tabFeatures">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto"  >
                     <Grid Name="grdFeature">
