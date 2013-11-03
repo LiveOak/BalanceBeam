@@ -1287,8 +1287,8 @@ namespace BalanceBeamGui {
         private void btnSaveImage_Click( object sender, RoutedEventArgs e ) {
             Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
             dlg.FileName = "DxBalanceBeam";
-            dlg.DefaultExt = ".bmp";
-            dlg.Filter = "Windows Bitmap (.bmp)|*.bmp|Portable Network Graphics (.png)|*.png|All files (*.*)|*.*";
+            dlg.DefaultExt = ".png";
+            dlg.Filter = "Portable Network Graphics|*.png|Windows Bitmap|*.bmp|All files|*.*";
             string filename = "";
             if( dlg.ShowDialog() == true ) {
                 filename = dlg.FileName;

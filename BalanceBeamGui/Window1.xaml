@@ -109,8 +109,8 @@
 	
 	<Grid Name="grid1" Background="#FFF0DFFF" > <!-- FFE9F2DE FFDEB1B1-->
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="147*" />
-            <ColumnDefinition Width="232*"/>
+			<ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto" />
 			<ColumnDefinition Width="Auto" />
 		</Grid.ColumnDefinitions>
