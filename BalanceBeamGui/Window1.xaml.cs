@@ -40,7 +40,6 @@ namespace BalanceBeamGui {
         private readonly TextBlock _potentialTorqueTextDown = new TextBlock();
 
         private readonly static StudyModule[] _possibleModules = { StudyModule.ChestPain, StudyModule.PediatricDyspnea };
-        //private const StudyModule _module = StudyModule.ChestPain;
         private StudyModule _module;//= _possibleModules[0];//StudyModule.PediatricDyspnea;
 
         private double _maxAbsoluteTorque = double.NaN;
@@ -63,26 +62,17 @@ namespace BalanceBeamGui {
         private readonly Color[] _allPossibleColors = { Color.FromArgb(255, 166, 206, 227), Color.FromArgb(255, 31, 120, 180), Color.FromArgb(255, 178, 223, 138), Color.FromArgb(255, 51, 160, 44), Color.FromArgb(255, 251, 154, 153), Color.FromArgb(255, 227, 26, 28), Color.FromArgb(255, 253, 191, 111), Color.FromArgb(255, 255, 127, 0), Color.FromArgb(255, 202, 178, 214), Color.FromArgb(255, 255, 255, 255), Color.FromArgb(255, 240, 240, 240), Color.FromArgb(255, 217, 217, 217), Color.FromArgb(255, 189, 189, 189), Color.FromArgb(255, 150, 150, 150), Color.FromArgb(255, 115, 115, 115), Color.FromArgb(255, 82, 82, 82), Color.FromArgb(255, 37, 37, 37), Color.FromArgb(255, 0, 0, 0),Color.FromArgb(119, 255, 255, 0), 
                                                       Colors.AliceBlue, Colors.AntiqueWhite, Colors.Aqua, Colors.Aquamarine, Colors.Azure, Colors.Beige, Colors.Bisque, Colors.Black, Colors.BlanchedAlmond, Colors.Blue, Colors.BlueViolet, Colors.Brown, Colors.BurlyWood, Colors.CadetBlue, Colors.Chartreuse, Colors.Chocolate, Colors.Coral, Colors.CornflowerBlue, Colors.Cornsilk, Colors.Crimson, Colors.Cyan, Colors.DarkBlue, Colors.DarkCyan, Colors.DarkGoldenrod, Colors.DarkGray, Colors.DarkGreen, Colors.DarkKhaki, Colors.DarkMagenta, Colors.DarkOliveGreen, Colors.DarkOrange, Colors.DarkOrchid, Colors.DarkRed, Colors.DarkSalmon, Colors.DarkSeaGreen, Colors.DarkSlateBlue, Colors.DarkSlateGray, Colors.DarkTurquoise, Colors.DarkViolet, Colors.DeepPink, Colors.DeepSkyBlue, Colors.DimGray, Colors.DodgerBlue, Colors.Firebrick, Colors.FloralWhite, Colors.ForestGreen, Colors.Fuchsia, Colors.Gainsboro, Colors.GhostWhite, Colors.Gold, Colors.Goldenrod, Colors.Gray, Colors.Green, Colors.GreenYellow, Colors.Honeydew, Colors.HotPink, Colors.IndianRed, Colors.Indigo, Colors.Ivory, Colors.Khaki, Colors.Lavender, Colors.LavenderBlush, Colors.LawnGreen, Colors.LemonChiffon, Colors.LightBlue, Colors.LightCoral, Colors.LightCyan, Colors.LightGoldenrodYellow, Colors.LightGray, Colors.LightGreen, Colors.LightPink, Colors.LightSalmon, Colors.LightSeaGreen, Colors.LightSkyBlue, Colors.LightSlateGray, Colors.LightSteelBlue, Colors.LightYellow, Colors.Lime, Colors.LimeGreen, Colors.Linen, Colors.Magenta, Colors.Maroon, Colors.MediumAquamarine, Colors.MediumBlue, Colors.MediumOrchid, Colors.MediumPurple, Colors.MediumSeaGreen, Colors.MediumSlateBlue, Colors.MediumSpringGreen, Colors.MediumTurquoise, Colors.MediumVioletRed, Colors.MidnightBlue, Colors.MintCream, Colors.MistyRose, Colors.Moccasin, Colors.NavajoWhite, Colors.Navy, Colors.OldLace, Colors.Olive, Colors.OliveDrab, Colors.Orange, Colors.OrangeRed, Colors.Orchid, Colors.PaleGoldenrod, Colors.PaleGreen, Colors.PaleTurquoise, Colors.PaleVioletRed, Colors.PapayaWhip, Colors.PeachPuff, Colors.Peru, Colors.Pink, Colors.Plum, Colors.PowderBlue, Colors.Purple, Colors.Red, Colors.RosyBrown, Colors.RoyalBlue, Colors.SaddleBrown, Colors.Salmon, Colors.SandyBrown, Colors.SeaGreen, Colors.SeaShell, Colors.Sienna, Colors.Silver, Colors.SkyBlue, Colors.SlateBlue, Colors.SlateGray, Colors.Snow, Colors.SpringGreen, Colors.SteelBlue, Colors.Tan, Colors.Teal, Colors.Thistle, Colors.Tomato, Colors.Transparent, Colors.Turquoise, Colors.Violet, Colors.Wheat, Colors.White, Colors.WhiteSmoke, Colors.Yellow, Colors.YellowGreen };
 
-        // private readonly Color[] _allPossibleColors = { Colors.AliceBlue, Colors.AntiqueWhite, Colors.Aqua, Colors.Aquamarine, Colors.Azure, Colors.Beige, Colors.Bisque, Colors.Black, Colors.BlanchedAlmond, Colors.Blue, Colors.BlueViolet, Colors.Brown, Colors.BurlyWood, Colors.CadetBlue, Colors.Chartreuse, Colors.Chocolate, Colors.Coral, Colors.CornflowerBlue, Colors.Cornsilk, Colors.Crimson, Colors.Cyan, Colors.DarkBlue, Colors.DarkCyan, Colors.DarkGoldenrod, Colors.DarkGray, Colors.DarkGreen, Colors.DarkKhaki, Colors.DarkMagenta, Colors.DarkOliveGreen, Colors.DarkOrange, Colors.DarkOrchid, Colors.DarkRed, Colors.DarkSalmon, Colors.DarkSeaGreen, Colors.DarkSlateBlue, Colors.DarkSlateGray, Colors.DarkTurquoise, Colors.DarkViolet, Colors.DeepPink, Colors.DeepSkyBlue, Colors.DimGray, Colors.DodgerBlue, Colors.Firebrick, Colors.FloralWhite, Colors.ForestGreen, Colors.Fuchsia, Colors.Gainsboro, Colors.GhostWhite, Colors.Gold, Colors.Goldenrod, Colors.Gray, Colors.Green, Colors.GreenYellow, Colors.Honeydew, Colors.HotPink, Colors.IndianRed, Colors.Indigo, Colors.Ivory, Colors.Khaki, Colors.Lavender, Colors.LavenderBlush, Colors.LawnGreen, Colors.LemonChiffon, Colors.LightBlue, Colors.LightCoral, Colors.LightCyan, Colors.LightGoldenrodYellow, Colors.LightGray, Colors.LightGreen, Colors.LightPink, Colors.LightSalmon, Colors.LightSeaGreen, Colors.LightSkyBlue, Colors.LightSlateGray, Colors.LightSteelBlue, Colors.LightYellow, Colors.Lime, Colors.LimeGreen, Colors.Linen, Colors.Magenta, Colors.Maroon, Colors.MediumAquamarine, Colors.MediumBlue, Colors.MediumOrchid, Colors.MediumPurple, Colors.MediumSeaGreen, Colors.MediumSlateBlue, Colors.MediumSpringGreen, Colors.MediumTurquoise, Colors.MediumVioletRed, Colors.MidnightBlue, Colors.MintCream, Colors.MistyRose, Colors.Moccasin, Colors.NavajoWhite, Colors.Navy, Colors.OldLace, Colors.Olive, Colors.OliveDrab, Colors.Orange, Colors.OrangeRed, Colors.Orchid, Colors.PaleGoldenrod, Colors.PaleGreen, Colors.PaleTurquoise, Colors.PaleVioletRed, Colors.PapayaWhip, Colors.PeachPuff, Colors.Peru, Colors.Pink, Colors.Plum, Colors.PowderBlue, Colors.Purple, Colors.Red, Colors.RosyBrown, Colors.RoyalBlue, Colors.SaddleBrown, Colors.Salmon, Colors.SandyBrown, Colors.SeaGreen, Colors.SeaShell, Colors.Sienna, Colors.Silver, Colors.SkyBlue, Colors.SlateBlue, Colors.SlateGray, Colors.Snow, Colors.SpringGreen, Colors.SteelBlue, Colors.Tan, Colors.Teal, Colors.Thistle, Colors.Tomato, Colors.Transparent, Colors.Turquoise, Colors.Violet, Colors.Wheat, Colors.White, Colors.WhiteSmoke, Colors.Yellow, Colors.YellowGreen };
         //Modifiable by user
-        // default colors for comboBoxes - Jay 101513
         private SolidColorBrush _brushPalette = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255)); //white
-        //private SolidColorBrush _brushForegroundPositive = new SolidColorBrush(Color.FromArgb(255, 51, 160, 44)); //green
         private SolidColorBrush _brushForegroundPositive = new SolidColorBrush(Color.FromArgb(255, 31, 120, 180)); //dark blue
         private SolidColorBrush _brushBackgroundPositive = new SolidColorBrush(Color.FromArgb(255, 166, 206, 227)); //light blue
         private SolidColorBrush _brushForegroundNegative = new SolidColorBrush(Color.FromArgb(255, 227, 26, 28)); // red
         private SolidColorBrush _brushBackgroundNegative = new SolidColorBrush(Color.FromArgb(255, 251, 154, 153)); // pink
         private SolidColorBrush _brushHighlight = new SolidColorBrush(Color.FromArgb(119, 255, 255, 0));// (SolidColorBrush)(new BrushConverter().ConvertFromString("#77FFFF00"));//LightGoldenrodYellow; //#77FFFF00;//Brushes.Yellow;
-        // change to DeemphasizedText text default color for readability - Jay 102413 
         private SolidColorBrush _brushDeemphasizedText = new SolidColorBrush(Color.FromArgb(255, 150, 150, 150));//#FF969696;
-        //private SolidColorBrush _brushDeemphasizedText = new SolidColorBrush(Color.FromArgb(255, 189, 189, 189));//Brushes.DarkGray;
         private SolidColorBrush _brushBalanceBeam = new SolidColorBrush(Color.FromArgb(255, 211, 211, 211));//Brushes.LightGray;
-        // change to DiagonalSelected text default color for readability - Jay 102413 
         private SolidColorBrush _brushDiagonalSelected = new SolidColorBrush(Color.FromArgb(255, 0, 255, 127));//#FF00FF7F light green
-        //private SolidColorBrush _brushDiagonalSelected = Brushes.Blue;
-        // change to burshDiagonalNotSelected text default color for readability - Jay 102413
         private SolidColorBrush _brushDiagonalNotSelected = new SolidColorBrush(Color.FromArgb(255, 189, 189, 189));//#FFDBDBDB light gray
-        //private SolidColorBrush _brushDiagonalNotSelected = Brushes.CadetBlue;
         //Note to Jay: the gray scale colors are defined below in `btnGrayScale_Click`
 
         //Fixed Values, that aren't customizable by the user
@@ -141,7 +131,7 @@ namespace BalanceBeamGui {
             UpdateDiagnosisAndTorqueLabels();
             _maxAbsoluteTorque = FindMaxAbsoluteTorque();
             DrawDiagram();
-            ResetGrdFeature();
+            ResetGrdFeature(false);
             SetDefaultValues();
             LoadExampleCases();
 
@@ -170,7 +160,7 @@ namespace BalanceBeamGui {
             UpdateDiagnosisAndTorqueLabels();
             _maxAbsoluteTorque = FindMaxAbsoluteTorque();
             DrawDiagram();
-            ResetGrdFeature();
+            ResetGrdFeature(false);
             SetDefaultValues();
             LoadExampleCases();
             _isWindowLoaded = true;
@@ -479,8 +469,6 @@ namespace BalanceBeamGui {
                     grdDiagnosisComparison.Children.Add(lbl);
                 }
             }
-
-
             sw.Stop();
             Trace.WriteLine("FillComparison nested loop: " + sw.Elapsed.ToString());
             HighlightSelectedComparison();
@@ -632,20 +620,14 @@ namespace BalanceBeamGui {
             double posteriorThreshold = sldPosteriorThreshold.Value;
             bool isUpperSelected = _diagnosisID1 <= _diagnosisID2;
             if( isUpperSelected ) {
-                //_lblRowGrandHeader.Content = "dx1 on left side of beam";
-                //_lblColumnGrandHeader.Content = "dx2 on right side of beam";
                 _lblRowGrandHeader.Content = "Dx 1 on left side of beam";
                 _lblColumnGrandHeader.Content = "Diagnosis 2 on right side of beam";
 
             } else {
-                //_lblRowGrandHeader.Content = "dx1 on right side of beam";
-                //_lblColumnGrandHeader.Content = "dx2 on left side of beam";
                 _lblRowGrandHeader.Content = "Dx 1 on right side of beam";
                 _lblColumnGrandHeader.Content = "Diagnosis 2 on left side of beam";
             }
-            //lblColumnGrandHeader.Content = "dx2 on right side of beam";
-            //lblc
-            //   grdDiagnosisComparison.Children["grdDiagnosisComparison.Children"]
+
 
             foreach( UIElement control in grdDiagnosisComparison.Children ) {
                 if( control.GetType() == typeof(Label) ) {
@@ -688,8 +670,6 @@ namespace BalanceBeamGui {
                     }
                 }
             }
-            //lbl.FontWeight = FontWeights.Normal;
-            //lbl.Background = Brushes.Transparent;//#00FFFFFF;
         }
         private void UpdateDiagnosisAndTorqueLabels( ) {
             ResultCollection collection = LoadResultCollection();
@@ -1115,7 +1095,7 @@ namespace BalanceBeamGui {
         public double TranslateTorqueToX( double torque, double maxAbsoluteTorque ) {
             return -1 * torque * (CanvasRadiusX - _canvasPadding) / maxAbsoluteTorque;
         }
-        private void ResetGrdFeature( ) {
+        private void ResetGrdFeature( bool cosmeticsOnly ) {
             foreach( Control control in grdFeature.Children ) {
                 if( Grid.GetRow(control) == 0 ) {
                     control.Foreground = _brushForegroundHeader;
@@ -1124,12 +1104,13 @@ namespace BalanceBeamGui {
                     control.Foreground = _brushDeemphasizedText;//_brushForegroundMissing;
                     control.FontWeight = FontWeights.Normal;
                 }
-                if( control.GetType() == typeof(CheckBox) ) {
+                if( !cosmeticsOnly && (control.GetType() == typeof(CheckBox)) ) {
                     CheckBox chk = (CheckBox)control;
                     chk.IsChecked = null;
                 }
             }
-            UpdateEntropies();
+            if( !cosmeticsOnly )
+                UpdateEntropies();
         }
         private void HighlightPotentialLabel( DataColumn dc ) {
             foreach( Control control in grdFeature.Children ) {
@@ -1239,7 +1220,7 @@ namespace BalanceBeamGui {
             HighlightSelectedComparison();
         }
         private void btnResetFeatures_Click( object sender, RoutedEventArgs e ) {
-            ResetGrdFeature();
+            ResetGrdFeature(false);
             UpdateDiagnosisAndTorqueLabels();
             DrawDiagram();
             FillComparisonGrid();
@@ -1247,23 +1228,13 @@ namespace BalanceBeamGui {
         private void btnGrayScale_Click( object sender, RoutedEventArgs e ) {
             SetComboBoxColor(cboBrushPalette, _brushPaletteDefault);
             SetComboBoxColor(cboBrushPositiveForeground, new SolidColorBrush(Colors.Black));  //Jay, if you'd like, replace these colors with something like: new SolidColorBrush(Color.FromArgb(255, 31, 120, 180)); //dark blue
-            // change to PositiveBackground text grayscale default color for readability - Jay 102413 
-             SetComboBoxColor(cboBrushPositiveBackground, new SolidColorBrush(Color.FromArgb(255, 150, 150, 150)));//FF969696 darker gray            
-            //SetComboBoxColor(cboBrushPositiveBackground, new SolidColorBrush(Colors.Silver));
+            SetComboBoxColor(cboBrushPositiveBackground, new SolidColorBrush(Color.FromArgb(255, 150, 150, 150)));//FF969696 darker gray            
             SetComboBoxColor(cboBrushNegativeForeground, new SolidColorBrush(Colors.Black));
-            // change to NegativeBackground text grayscale default color for readability - Jay 102413 
             SetComboBoxColor(cboBrushNegativeBackground, new SolidColorBrush(Color.FromArgb(255, 240, 240, 240)));//FFF0F0F0 light gray
-            //SetComboBoxColor(cboBrushNegativeBackground, new SolidColorBrush(Colors.Silver));
-            // change to Highlight text grayscale default color for readability - Jay 102413             
-             SetComboBoxColor(cboBrushHighlight, new SolidColorBrush(Color.FromArgb(255, 115, 115, 115)));//FF737373 dark gray
-            //SetComboBoxColor(cboBrushHighlight, new SolidColorBrush(Colors.Black));
-            // change to DeemphasizedText text grayscale default color for readability - Jay 102413             
-             SetComboBoxColor(cboBrushDeemphasizedText, new SolidColorBrush(Color.FromArgb(255, 189, 189, 189)));//FFBDBDBD; FFF0F0F0 light gray
-            //SetComboBoxColor(cboBrushDeemphasizedText, new SolidColorBrush(Colors.Gray));
+            SetComboBoxColor(cboBrushHighlight, new SolidColorBrush(Color.FromArgb(255, 115, 115, 115)));//FF737373 dark gray
+            SetComboBoxColor(cboBrushDeemphasizedText, new SolidColorBrush(Color.FromArgb(255, 189, 189, 189)));//FFBDBDBD; FFF0F0F0 light gray
             SetComboBoxColor(cboBrushBalanceBeam, new SolidColorBrush(Colors.LightGray));
-            // change to DiagonalSelected text grayscale default color for readability - Jay 102413             
-             SetComboBoxColor(cboBrushDiagonalSelected, new SolidColorBrush(Color.FromArgb(255, 150, 150, 150)));//FF969696 darker gray
-            //SetComboBoxColor(cboBrushDiagonalSelected, new SolidColorBrush(Colors.Gray));
+            SetComboBoxColor(cboBrushDiagonalSelected, new SolidColorBrush(Color.FromArgb(255, 150, 150, 150)));//FF969696 darker gray
             SetComboBoxColor(cboBrushDiagonalNotSelected, new SolidColorBrush(Colors.LightGray));
             sldAlphaHighlight.Value = _alphaHighlight;
             sldAlphaPotential.Value = _alphaPotential;
@@ -1411,6 +1382,8 @@ namespace BalanceBeamGui {
             if( _isWindowLoaded ) {
                 DrawDiagram();
                 FillComparisonGrid();
+                //UpdateFeatureGrid();
+                ResetGrdFeature(true);    
             }
         }
         private void cboBrushBalanceBeam_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
