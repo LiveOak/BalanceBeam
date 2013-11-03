@@ -3,38 +3,38 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:CALC="clr-namespace:Calculation;assembly=Calculation"
         Title="Dx Balance Beam" Loaded="Window_Loaded" Icon="/BalanceBeamGui;component/Icon1.ico" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="837" Width="898">
-	<Window.Resources>
-		<!--<CALC:ExampleCases x:Key="exampleCases"    />-->
-		<DataTemplate x:Key="SolidColorTemplate" DataType="{x:Type SolidColorBrush}">
-			<DockPanel Margin="1">
-				<Border Background="{Binding}" Width="15" Height="15" DockPanel.Dock="Left"/>
-				<TextBlock Text="{Binding}" Margin="5,0,0,0"/>
-			</DockPanel>
-		</DataTemplate>
-		<DataTemplate x:Key="ColorItemTemplate">
-			<StackPanel Orientation="Vertical">
-				<TextBlock Text="{Binding Path=Name}" Background="{Binding Path=Name}"/>
-			</StackPanel>
-		</DataTemplate>
-		<LinearGradientBrush x:Key="GradientBrushTorque" StartPoint="0,0" EndPoint="1,1">
-			<GradientBrush.GradientStops>
-				<GradientStopCollection>
-					<GradientStop Offset="0.0" Color="#33E0E0E0"/>
-					<GradientStop Offset="0.75" Color="#88E0E0E0"/>
-					<GradientStop Offset="1.0" Color="#33E0E0E0"/>
-				</GradientStopCollection>
-			</GradientBrush.GradientStops>
-		</LinearGradientBrush>
-		<LinearGradientBrush x:Key="GradientBrushPosterior" StartPoint="0,0" EndPoint="1,1">
-			<GradientBrush.GradientStops>
-				<GradientStopCollection>
-					<GradientStop Offset="0.0" Color="#33F0F0F0"/>
-					<GradientStop Offset="0.75" Color="#88F0F0F0"/>
-					<GradientStop Offset="1.0" Color="#33F0F0F0"/>
-				</GradientStopCollection>
-			</GradientBrush.GradientStops>
-		</LinearGradientBrush>
-		<!--<DataTemplate x:Key="exampleCaseTemplate" >
+    <Window.Resources>
+        <!--<CALC:ExampleCases x:Key="exampleCases"    />-->
+        <DataTemplate x:Key="SolidColorTemplate" DataType="{x:Type SolidColorBrush}">
+            <DockPanel Margin="1">
+                <Border Background="{Binding}" Width="15" Height="15" DockPanel.Dock="Left"/>
+                <TextBlock Text="{Binding}" Margin="5,0,0,0"/>
+            </DockPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="ColorItemTemplate">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Path=Name}" Background="{Binding Path=Name}"/>
+            </StackPanel>
+        </DataTemplate>
+        <LinearGradientBrush x:Key="GradientBrushTorque" StartPoint="0,0" EndPoint="1,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Offset="0.0" Color="#33E0E0E0"/>
+                    <GradientStop Offset="0.75" Color="#88E0E0E0"/>
+                    <GradientStop Offset="1.0" Color="#33E0E0E0"/>
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GradientBrushPosterior" StartPoint="0,0" EndPoint="1,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Offset="0.0" Color="#33F0F0F0"/>
+                    <GradientStop Offset="0.75" Color="#88F0F0F0"/>
+                    <GradientStop Offset="1.0" Color="#33F0F0F0"/>
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <!--<DataTemplate x:Key="exampleCaseTemplate" >
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto"/>
@@ -45,49 +45,49 @@
 			</Grid>
 		</DataTemplate>-->
 
-		<!--<SolidColorBrush  x:Key="GradientBrush" Color="Aquamarine" />-->
-		<ControlTemplate x:Key="templateBigCheck" TargetType="{x:Type CheckBox}">
-			<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-				<Grid >
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="12"></ColumnDefinition>
-						<ColumnDefinition Width="*"></ColumnDefinition>
-					</Grid.ColumnDefinitions>
-					<!--<Grid.RowDefinitions>
+        <!--<SolidColorBrush  x:Key="GradientBrush" Color="Aquamarine" />-->
+        <ControlTemplate x:Key="templateBigCheck" TargetType="{x:Type CheckBox}">
+            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="12"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <!--<Grid.RowDefinitions>
 						<RowDefinition Height="10"/>
 					</Grid.RowDefinitions>-->
-					<ContentPresenter Content="" Margin="{TemplateBinding Padding}"
+                    <ContentPresenter Content="" Margin="{TemplateBinding Padding}"
                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-					<Border Grid.Column="0" BorderThickness="0" Height="12" Width="12"> 
-						<Border.Background>
-							<VisualBrush>
-								<VisualBrush.Visual>
-									<!--<Path Name="path" Data="M 0 0 L 10 10 M 10 0 L 0 10" Stroke="Red"  StrokeStartLineCap="Round"-->
-									<!--<Path Name="path" Data="M 1,5 L 2,7" Stroke="{TemplateBinding Foreground}"  StrokeStartLineCap="Round"-->
-									<Path Name="path" Data="M 0 0 L 10 10 M 10 0 L 0 10" Stroke="{TemplateBinding Foreground}"  StrokeStartLineCap="Round"
+                    <Border Grid.Column="0" BorderThickness="0" Height="12" Width="12">
+                        <Border.Background>
+                            <VisualBrush>
+                                <VisualBrush.Visual>
+                                    <!--<Path Name="path" Data="M 0 0 L 10 10 M 10 0 L 0 10" Stroke="Red"  StrokeStartLineCap="Round"-->
+                                    <!--<Path Name="path" Data="M 1,5 L 2,7" Stroke="{TemplateBinding Foreground}"  StrokeStartLineCap="Round"-->
+                                    <Path Name="path" Data="M 0 0 L 10 10 M 10 0 L 0 10" Stroke="{TemplateBinding Foreground}"  StrokeStartLineCap="Round"
 										StrokeEndLineCap="Round" StrokeLineJoin="Round" SnapsToDevicePixels="True" StrokeThickness="2"
 										  HorizontalAlignment="Left" VerticalAlignment="Top" Height="12" Width="12" MinHeight="12" MinWidth="12" MaxWidth="12" MaxHeight="12" />
-							
-								</VisualBrush.Visual>
-							</VisualBrush>
-						</Border.Background>
-					</Border>
-					<Label Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Foreground="{TemplateBinding Foreground}" Grid.Column="1" 
-						   Padding="2,0,0,0" VerticalAlignment="Top" Margin="0	"/>
-				</Grid>
-			</Border>
 
-			<ControlTemplate.Triggers>
-				<Trigger Property="IsChecked" Value="True">
-					<Setter TargetName="path" Property="Data" Value="M 5 0 L 5 10 M 10 5 L 0 5" />
-				</Trigger>
-				<Trigger Property="IsChecked" Value="{x:Null}">
-					<Setter TargetName="path" Property="Data" Value="M 0 2.5 A 5 2.5 0 1 1 5 5 L 5 8 M 5 10 L 5 10" />
-				</Trigger>
-				<Trigger Property="IsEnabled" Value="False">
-					<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
-				</Trigger>
-				<!--<Trigger Property="HasContent" Value="True">
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Border.Background>
+                    </Border>
+                    <Label Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Foreground="{TemplateBinding Foreground}" Grid.Column="1" 
+						   Padding="2,0,0,0" VerticalAlignment="Top" Margin="0	"/>
+                </Grid>
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter TargetName="path" Property="Data" Value="M 5 0 L 5 10 M 10 5 L 0 5" />
+                </Trigger>
+                <Trigger Property="IsChecked" Value="{x:Null}">
+                    <Setter TargetName="path" Property="Data" Value="M 0 2.5 A 5 2.5 0 1 1 5 5 L 5 8 M 5 10 L 5 10" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                </Trigger>
+                <!--<Trigger Property="HasContent" Value="True">
 					<Setter Property="FocusVisualStyle">
 						<Setter.Value>
 							<Style>
@@ -103,110 +103,112 @@
 					</Setter>
 					<Setter Property="Padding" Value="1" />
 				</Trigger>-->
-			</ControlTemplate.Triggers>
-		</ControlTemplate>
-	</Window.Resources>
-	
-	<Grid Name="grid1" Background="#FFF0DFFF" > <!-- FFE9F2DE FFDEB1B1-->
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="1*" />
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
+    <Grid Name="grid1" Background="#FFF0DFFF" >
+        <!-- FFE9F2DE FFDEB1B1-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto" />
-			<ColumnDefinition Width="Auto" />
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
-			<RowDefinition Height="Auto"/>
-		</Grid.RowDefinitions>
-		<Label Name="lblCurrentDiagnoses" Content="Diagnoses Label" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="16" />
-		<Button Name="btnResetFeatures" Content="Reset Features" HorizontalAlignment="Right" Height="23" Margin="0,1,0,0"  VerticalAlignment="Top" Click="btnResetFeatures_Click" Grid.Row="0" Grid.Column="1"/>
-		<Label Name="lblLeverageSum" Content="Torque Label" HorizontalAlignment="Left" Margin="0,22,0,0"  VerticalAlignment="Top" />
-		<!--<Button Name="btnCalculate" Content="Dummy" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="52" Click="btnCalculate_Click" Visibility="Visible" Margin="0,26,165,0" />-->
-		<Button Name="btnSaveImage" Content="Save Image"  HorizontalAlignment="Right" Height="23" Margin="0,1,88,0"  VerticalAlignment="Top" Click="btnSaveImage_Click" Width="83" Grid.Column="1"  />
-		<ComboBox Name="cboModule" HorizontalAlignment="Right" Height="23" Margin="0,27,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cboModule_SelectionChanged" Grid.Row="0" Grid.Column="1" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Name="lblCurrentDiagnoses" Content="Diagnoses Label" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="16" />
+        <Label Name="lblLeverageSum" Content="Torque Label" HorizontalAlignment="Left" Margin="0,22,0,0"  VerticalAlignment="Top" />
+        
+        <!--<Button Name="btnCalculate" Content="Dummy" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="52" Click="btnCalculate_Click" Visibility="Visible" Margin="0,26,165,0" />-->
+        <Button Name="btnSaveImage" Content="Save Image"  HorizontalAlignment="Right" Height="23" Margin="0,1,88,0"  VerticalAlignment="Top" Click="btnSaveImage_Click" Width="83" Grid.Column="1"  />
+        <Button Name="btnResetFeatures" Content="Reset Features" HorizontalAlignment="Right" Height="23" Margin="0,1,0,0"  VerticalAlignment="Top" Click="btnResetFeatures_Click" Grid.Row="0" Grid.Column="1"/>
+        <ComboBox Name="cboModule" HorizontalAlignment="Right" Height="23" Margin="0,27,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cboModule_SelectionChanged" Grid.Row="0" Grid.Column="1" />
 
 
-		<TabControl Name="tabControlLeft" Grid.Column="0" Grid.Row="1" Background="Transparent" Grid.ColumnSpan="2">
-			<TabItem Header="Balance Beam" Name="tabBalanceBeam" >
-				<Viewbox Name="viewbox1"  Stretch="Uniform">
-					<Canvas Height="460" Name="canvas1" Width="830" ></Canvas>
-				</Viewbox>
-			</TabItem>
-			<TabItem Header="Example Cases" Name="tabExampleCases">
-				<!--<ListBox Name="lstExamples" ItemTemplate="{StaticResource exampleCaseTemplate}" SelectionChanged="lstExamples_SelectionChanged" MaxWidth="200" />-->
-				<Grid>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="*"/>
-					</Grid.ColumnDefinitions>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="*"/>
-					</Grid.RowDefinitions>
-					<Label Content="Click Example Case Below" Grid.Column="0" Grid.Row="0"/>
-					<ListBox Name="lstExamples"  Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  Padding="5" SelectionChanged="lstExamples_SelectionChanged" ForceCursor="True" />
-					<TextBlock Name="txtShortDescription" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" FontSize="14" FontStyle="Italic" FontWeight="Bold" HorizontalAlignment="Center"/>
-					<ScrollViewer Grid.Column="1" Grid.Row="2" VerticalScrollBarVisibility="Auto" >
-					<TextBox Name="txtLongDescription" TextWrapping="Wrap" Padding="10" />
-					</ScrollViewer>
-				</Grid>
-			</TabItem>
-			<TabItem Name="tabDocumentation" Header="Documentation" >
-				<Label Content="...will go here eventually" HorizontalAlignment="Center"/>
-			</TabItem>
-		</TabControl>
-		<GridSplitter Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Right" Name="gridSplitter1" VerticalAlignment="Stretch" Width="5" Background="#FFBCBCBC" ResizeDirection="Columns" ResizeBehavior="PreviousAndNext" />
-		<StackPanel Grid.Row="2" Grid.Column="0" Name="stackPanel1" Orientation="Horizontal" Grid.ColumnSpan="2">
-			<Grid Name="grdDiagnosisComparison" ShowGridLines="False"/>
-		</StackPanel>
-		<TabControl Name="tabControlRight" Grid.Column="2"  Grid.Row="0" Grid.RowSpan="3"  Background="#FFEFEFFF" >
-			<TabItem Header="Features" Name="tabFeatures">
-				<ScrollViewer HorizontalScrollBarVisibility="Auto"  >
-					<Grid Name="grdFeature">
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition Width="Auto"/>
-						</Grid.ColumnDefinitions>		
-					</Grid>
-				</ScrollViewer>
-			</TabItem>
-			<TabItem Header="Cosmetics" Name="tabCosmetics">
-				<ScrollViewer HorizontalScrollBarVisibility="Auto"  >
-					<StackPanel>
-						<Label Content="Arrow Size" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
-						<Slider Name="sldArrowSize" Minimum="1" Maximum="30" Value="11"  ValueChanged="sldArrowSize_ValueChanged" />
-						<Label Content="Arrow Font Size" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
-						<Slider Name="sldArrowFontSize" Minimum="1" Maximum="30" Value="10"  ValueChanged ="sldArrowFontSize_ValueChanged"/>
-						<Label Content="Comparison Font Size" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
-						<Slider Name="sldComparisonFontSize" Minimum="1" Maximum="15" Value="12"  ValueChanged="sldComparisonFontSize_ValueChanged"	 />
-						<Label Content="Palette" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
-						<ComboBox Name="cboBrushPalette" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushPalette_SelectionChanged"></ComboBox>
-						<Label Content="Positive Foreground" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
-						<ComboBox Name="cboBrushPositiveForeground" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushPositiveForeground_SelectionChanged"></ComboBox>
-						<Label Content="Positive Background" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
-						<ComboBox Name="cboBrushPositiveBackground" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushPositiveBackground_SelectionChanged" ></ComboBox>
+        <TabControl Name="tabControlLeft" Grid.Column="0" Grid.Row="1" Background="Transparent" Grid.ColumnSpan="2">
+            <TabItem Header="Balance Beam" Name="tabBalanceBeam" >
+                <Viewbox Name="viewbox1"  Stretch="Uniform">
+                    <Canvas Height="460" Name="canvas1" Width="830" ></Canvas>
+                </Viewbox>
+            </TabItem>
+            <TabItem Header="Example Cases" Name="tabExampleCases">
+                <!--<ListBox Name="lstExamples" ItemTemplate="{StaticResource exampleCaseTemplate}" SelectionChanged="lstExamples_SelectionChanged" MaxWidth="200" />-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Click Example Case Below" Grid.Column="0" Grid.Row="0"/>
+                    <ListBox Name="lstExamples"  Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  Padding="5" SelectionChanged="lstExamples_SelectionChanged" ForceCursor="True" />
+                    <TextBlock Name="txtShortDescription" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" FontSize="14" FontStyle="Italic" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <ScrollViewer Grid.Column="1" Grid.Row="2" VerticalScrollBarVisibility="Auto" >
+                        <TextBox Name="txtLongDescription" TextWrapping="Wrap" Padding="10" />
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Name="tabDocumentation" Header="Documentation" >
+                <Label Content="...will go here eventually" HorizontalAlignment="Center"/>
+            </TabItem>
+        </TabControl>
+        <GridSplitter Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Right" Name="gridSplitter1" VerticalAlignment="Stretch" Width="5" Background="#FFBCBCBC" ResizeDirection="Columns" ResizeBehavior="PreviousAndNext" />
+        <StackPanel Grid.Row="2" Grid.Column="0" Name="stackPanel1" Orientation="Horizontal" Grid.ColumnSpan="2">
+            <Grid Name="grdDiagnosisComparison" ShowGridLines="False"/>
+        </StackPanel>
+        <TabControl Name="tabControlRight" Grid.Column="2"  Grid.Row="0" Grid.RowSpan="3"  Background="#FFEFEFFF" >
+            <TabItem Header="Features" Name="tabFeatures">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto"  >
+                    <Grid Name="grdFeature">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Cosmetics" Name="tabCosmetics">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto"  >
+                    <StackPanel>
+                        <Label Content="Arrow Size" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <Slider Name="sldArrowSize" Minimum="1" Maximum="30" Value="11"  ValueChanged="sldArrowSize_ValueChanged" />
+                        <Label Content="Arrow Font Size" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <Slider Name="sldArrowFontSize" Minimum="1" Maximum="30" Value="10"  ValueChanged ="sldArrowFontSize_ValueChanged"/>
+                        <Label Content="Comparison Font Size" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <Slider Name="sldComparisonFontSize" Minimum="1" Maximum="15" Value="12"  ValueChanged="sldComparisonFontSize_ValueChanged"	 />
+                        <Label Content="Palette" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <ComboBox Name="cboBrushPalette" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushPalette_SelectionChanged"></ComboBox>
+                        <Label Content="Positive Foreground" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <ComboBox Name="cboBrushPositiveForeground" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushPositiveForeground_SelectionChanged"></ComboBox>
+                        <Label Content="Positive Background" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <ComboBox Name="cboBrushPositiveBackground" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushPositiveBackground_SelectionChanged" ></ComboBox>
 
-						<Label Content="Negative Foreground" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
-						<ComboBox Name="cboBrushNegativeForeground" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushNegativeForeground_SelectionChanged"></ComboBox>
-						<Label Content="Negative Background" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
-						<ComboBox Name="cboBrushNegativeBackground" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushNegativeBackground_SelectionChanged" ></ComboBox>
+                        <Label Content="Negative Foreground" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <ComboBox Name="cboBrushNegativeForeground" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushNegativeForeground_SelectionChanged"></ComboBox>
+                        <Label Content="Negative Background" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <ComboBox Name="cboBrushNegativeBackground" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushNegativeBackground_SelectionChanged" ></ComboBox>
                         <Label Content="Highlight" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
                         <ComboBox Name="cboBrushHighlight" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged ="cboBrushHighlight_SelectionChanged"	 ></ComboBox>
                         <Label Content="Total Arrows Opaqueness" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
                         <Slider Name="sldAlphaHighlight" Maximum="255" Value="119" ValueChanged="sldAlphaHighlight_ValueChanged" SmallChange="1" />
-						<!--<ComboBox Name="cboColorPalette" ItemTemplate="{DynamicResource ColorItemTemplate}" SelectedIndex="0" />-->
-						<Label Content="Hovering Arrows Opaqueness" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
-						<Slider Name="sldAlphaPotential" Maximum="255" Value="119" ValueChanged="sldAlphaPotential_ValueChanged" SmallChange="1" />
-						<Label Name="lblPosteriorThreshold" Content="Posterior Threshold" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
-						<Slider Name="sldPosteriorThreshold" Maximum="1" Value="0.4" ValueChanged="sldPosteriorThreshold_ValueChanged"  SmallChange="0.05" LargeChange="0.2" />
-						<Label Name="lblTopReductions" Content="Top Reductions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
-						<Slider Name="sldTopReductions" Minimum="0" Maximum="9" Value="5" ValueChanged="sldTopReductions_ValueChanged"  SmallChange="1" LargeChange="2" />
-						<CheckBox Name="chkDisplayTotal" Content="Display Total Arrow" IsChecked="True" Margin="10,10,0,10" IsThreeState="False" Click="chkDisplayTotal_Click" />
+                        <!--<ComboBox Name="cboColorPalette" ItemTemplate="{DynamicResource ColorItemTemplate}" SelectedIndex="0" />-->
+                        <Label Content="Hovering Arrows Opaqueness" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <Slider Name="sldAlphaPotential" Maximum="255" Value="119" ValueChanged="sldAlphaPotential_ValueChanged" SmallChange="1" />
+                        <Label Name="lblPosteriorThreshold" Content="Posterior Threshold" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <Slider Name="sldPosteriorThreshold" Maximum="1" Value="0.4" ValueChanged="sldPosteriorThreshold_ValueChanged"  SmallChange="0.05" LargeChange="0.2" />
+                        <Label Name="lblTopReductions" Content="Top Reductions" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
+                        <Slider Name="sldTopReductions" Minimum="0" Maximum="9" Value="5" ValueChanged="sldTopReductions_ValueChanged"  SmallChange="1" LargeChange="2" />
+                        <CheckBox Name="chkDisplayTotal" Content="Display Total Arrow" IsChecked="True" Margin="10,10,0,10" IsThreeState="False" Click="chkDisplayTotal_Click" />
 
                         <Label Content="Deemphasized Text" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
                         <ComboBox Name="cboBrushDeemphasizedText" ItemTemplate="{StaticResource SolidColorTemplate}" SelectedIndex="0" SelectionChanged="cboBrushDeemphasizedText_SelectionChanged"></ComboBox>
@@ -225,8 +227,8 @@
                         <Rectangle Fill="#00000000" Height="5"  Width="10"/>
                         <Label Name="lblVersion" Content="BBAID Version" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0,5,0,0" Margin="1" />
                     </StackPanel>
-				</ScrollViewer>
-			</TabItem>
-		</TabControl>
-	</Grid>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </Window>
