@@ -438,8 +438,15 @@ namespace BalanceBeamGui {
                 lbl.Tag = new byte[] { diagnosisID, diagnosisID };
                 lbl.HorizontalContentAlignment = HorizontalAlignment.Right;
                 lbl.Content = Math.Round(posteriorValues[diagnosisID - 1], _roundingDigitsMatrixProbability).ToString(probabilityFormat);//Subtract 1 for the zero-based index.
-                lbl.ToolTip = string.Format("Suprisal(Disease) = -p(Disease)*Log2(p(Disease)) = {0}\nEntropyUncertainty(Disease) = [-p(Disease)*Log2(p(Disease))] - [(1-p(Disease))*Log2(1-p(Disease))]= {1}\nTotal Entropy Uncertainty = Sum(Surprisal(Disease)) = {2}",
-                    Math.Round(suprisals[diagnosisID - 1], _roundingDigitsToolTips), Math.Round(entropyUncertainties[diagnosisID - 1], _roundingDigitsToolTips), Math.Round(expectedSurprisal, _roundingDigitsToolTips));
+                lbl.ToolTip = string.Format(
+                    "Posterior(Disease) = {0}\n" +
+                    "Suprisal(Disease) = -p(Disease)*Log2(p(Disease)) = {1}\n" +
+                    "EntropyUncertainty(Disease) = [-p(Disease)*Log2(p(Disease))] - [(1-p(Disease))*Log2(1-p(Disease))]= {2}\n" +
+                    "Total Entropy Uncertainty = Sum(Surprisal(Disease)) = {3}",
+                    Math.Round(posteriorValues[diagnosisID - 1], _roundingDigitsToolTips),
+                    Math.Round(suprisals[diagnosisID - 1], _roundingDigitsToolTips), 
+                    Math.Round(entropyUncertainties[diagnosisID - 1], _roundingDigitsToolTips),
+                    Math.Round(expectedSurprisal, _roundingDigitsToolTips));
 
                 lbl.FontSize = fontSize;
                 lbl.Padding = new Thickness(0); Grid.SetRow(lbl, diagnosisID + 1);
