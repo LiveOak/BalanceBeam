@@ -627,11 +627,11 @@ namespace BalanceBeamGui {
             double posteriorThreshold = sldPosteriorThreshold.Value;
             bool isUpperSelected = _diagnosisID1 <= _diagnosisID2;
             if( isUpperSelected ) {
-                _lblRowGrandHeader.Content = "Dx 1 on left side of beam";
+                _lblRowGrandHeader.Content = "Diagnosis 1 on left side of beam";
                 _lblColumnGrandHeader.Content = "Diagnosis 2 on right side of beam";
 
             } else {
-                _lblRowGrandHeader.Content = "Dx 1 on right side of beam";
+                _lblRowGrandHeader.Content = "Diagnosis 1 on right side of beam";
                 _lblColumnGrandHeader.Content = "Diagnosis 2 on left side of beam";
             }
 
