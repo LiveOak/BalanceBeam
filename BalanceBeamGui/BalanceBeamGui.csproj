@@ -16,7 +16,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>ftp://1045207.sites.myregisteredsite.com/sites/howardliveoak.com/www/DxBalanceBeam/Deployment/</PublishUrl>
+    <PublishUrl>\\fmc-snape\Archimedes\HammBalanceBeam\Deployment\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -26,12 +26,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://howardliveoak.com/DxBalanceBeam/Deployment/</InstallUrl>
+    <InstallUrl>http://www.fammed.ouhsc.edu/balancebeam/deployment/</InstallUrl>
     <ProductName>Dx Balance Beam</ProductName>
     <PublisherName>OUHSC Dept of Family and Preventive Medicine</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.htm</WebPage>
-    <ApplicationRevision>91</ApplicationRevision>
+    <ApplicationRevision>95</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -61,7 +61,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>5A26C1B08F3298FE578AF73524A6D7AF60303670</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>71E35F94D44431690B409E3A0E21A6A9C4241820</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>BalanceBeamGui_TemporaryKey.pfx</ManifestKeyFile>
