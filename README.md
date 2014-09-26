@@ -6,7 +6,7 @@ This repository supports two articles:
 
 ## Article 1
 
-Hamm, Rob M., Beasley, William Howard, and Johnson, William Jay (2014). [A Balance Beam Aid for Instruction in Clinical Diagnostic Reasoning](http://www.ncbi.nlm.nih.gov/pubmed/24739532). [*Medical Decision Making*](http://mdm.sagepub.com/)
+[Hamm, Robert  M.](http://scholar.google.com/citations?user=rit3xpIAAAAJ&hl=en), [Beasley, William Howard](http://scholar.google.com/citations?user=ffsJTC0AAAAJ&hl=en), and Johnson, William Jay (2014). [A Balance Beam Aid for Instruction in Clinical Diagnostic Reasoning](http://www.ncbi.nlm.nih.gov/pubmed/24739532). [*Medical Decision Making*](http://mdm.sagepub.com/)
 DOI: 10.1177/0272989X14529623. Available on [ResearchGate](https://www.researchgate.net/publication/261748914_A_Balance_Beam_Aid_for_Instruction_in_Clinical_Diagnostic_Reasoning)
 
 Abstract
@@ -15,7 +15,7 @@ Abstract
 Keywords: Bayes’ theorem; balance beam metaphor; chest pain diagnosis; computer tutorial; differential diagnosis; medical education
 
 ## Article 2
-Hamm, Rob M., and Beasley, William Howard (2014). [The Balance Beam Metaphor: A Perspective on Clinical Diagnosis](http://www.ncbi.nlm.nih.gov/pubmed/24739531). [*Medical Decision Making*](http://mdm.sagepub.com/)
+[Hamm, Robert  M.](http://scholar.google.com/citations?user=rit3xpIAAAAJ&hl=en), and [Beasley, William Howard](http://scholar.google.com/citations?user=ffsJTC0AAAAJ&hl=en) (2014). [The Balance Beam Metaphor: A Perspective on Clinical Diagnosis](http://www.ncbi.nlm.nih.gov/pubmed/24739531). [*Medical Decision Making*](http://mdm.sagepub.com/)
 DOI: 10.1177/0272989X14528755. Available on [ResearchGate](https://www.researchgate.net/publication/261748694_The_Balance_Beam_Metaphor_A_Perspective_on_Clinical_Diagnosis)
 
 Abstract
@@ -24,4 +24,4 @@ Abstract
 Keywords: Bayes’ theorem; balance beam metaphor; class-conditional independence; medical diagnosis; medical education; spectrum effects; threshold probability
 
 ## Code Repository
-The software is written Primarily in C# 4.0, under the Mozilla License.  The DOI of the *repository* (not of the articles) is 10.5281/zenodo.11802
+The software is written Primarily in C# 4.0, under the Mozilla License.  The DOI of the *repository* (not of the articles) is [10.5281/zenodo.11802](https://zenodo.org/record/11802).
