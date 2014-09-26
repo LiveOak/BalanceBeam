@@ -6,7 +6,7 @@ This repository supports two articles:
 
 ## Article 1
 
-[Hamm, Robert  M.](http://scholar.google.com/citations?user=rit3xpIAAAAJ&hl=en), [Beasley, William Howard](http://scholar.google.com/citations?user=ffsJTC0AAAAJ&hl=en), and Johnson, William Jay (2014). [A Balance Beam Aid for Instruction in Clinical Diagnostic Reasoning](http://www.ncbi.nlm.nih.gov/pubmed/24739532). [*Medical Decision Making*](http://mdm.sagepub.com/)
+[Hamm, Robert  M.](http://scholar.google.com/citations?user=rit3xpIAAAAJ&hl=en), [Beasley, William Howard](http://scholar.google.com/citations?user=ffsJTC0AAAAJ&hl=en), and [Johnson, William Jay](http://www.oumedicine.com/anesthesiology/academic-information/anesthesiology-residency/current-residents) (2014). [A Balance Beam Aid for Instruction in Clinical Diagnostic Reasoning](http://www.ncbi.nlm.nih.gov/pubmed/24739532). [*Medical Decision Making*](http://mdm.sagepub.com/)
 DOI: 10.1177/0272989X14529623. Available on [ResearchGate](https://www.researchgate.net/publication/261748914_A_Balance_Beam_Aid_for_Instruction_in_Clinical_Diagnostic_Reasoning)
 
 Abstract
