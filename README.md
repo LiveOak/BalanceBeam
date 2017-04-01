@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/4971/LiveOak/BalanceBeam.png)](http://dx.doi.org/10.5281/zenodo.11802)
+[![DOI](https://zenodo.org/badge/12494278.svg)](https://zenodo.org/badge/latestdoi/12494278)
 BalanceBeam
 ===========
 
