@@ -34,8 +34,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>balance-beam-temp-key-2.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -68,6 +67,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="balance-beam-temp-key-2.pfx" />
     <None Include="BeamDataSet.xsc">
       <DependentUpon>BeamDataSet.xsd</DependentUpon>
     </None>
