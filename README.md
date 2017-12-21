@@ -1,11 +1,10 @@
 ## Installation Instructions
 Please see the most recent entry in the [Releases](https://github.com/LiveOak/BalanceBeam/releases) tab.
 
-[![DOI](https://zenodo.org/badge/12494278.svg)](https://zenodo.org/badge/latestdoi/12494278)
-BalanceBeam
+BalanceBeam 
 ===========
 
-This repository supports two articles:
+[![DOI](https://zenodo.org/badge/12494278.svg)](https://zenodo.org/badge/latestdoi/12494278) This repository supports two articles:
 
 ## Article 1
 
