@@ -342,6 +342,7 @@
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
 		<row><td>BalanceBeamGui.Primary_output</td><td>{1FD15793-0FF6-463D-82C1-C5A3E3800DC1}</td><td>DATABASEDIR</td><td>2</td><td/><td>balancebeamgui.primary_outpu</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{E4C50075-8437-4D93-B9E9-91AC9FFA7488}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1053,6 +1054,7 @@
 		<col key="yes" def="s72">Component_</col>
 		<row><td>DATABASEDIR</td><td>BalanceBeamGui.Primary_output</td></row>
 		<row><td>INSTALLDIR</td><td>BalanceBeamGui.Primary_output</td></row>
+		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1867,6 +1869,7 @@
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
 		<row><td>AlwaysInstall</td><td>BalanceBeamGui.Primary_output</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 	</table>
 
 	<table name="File">
@@ -2024,6 +2027,7 @@
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
 		<row><td>BalanceBeamGui.Primary_output</td><td/><td/><td>_91FE23B6_5957_4C38_B63D_DA715DC22662_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_DFF07F64_A6B7_49B8_AEB8_CFFDDE040FD2_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2330,6 +2334,8 @@
 		<col key="yes" def="s72">ISProductConfiguration_</col>
 		<col key="yes" def="s72">Property</col>
 		<col def="L255">Value</col>
+		<row><td>Express</td><td>MSIPackageFileName</td><td>balance-beam-setup</td></row>
+		<row><td>Express</td><td>SetupFileName</td><td>balance-beam-setup</td></row>
 	</table>
 
 	<table name="ISRelease">
@@ -2579,7 +2585,7 @@
 		<col def="I2">Order</col>
 		<col def="I2">ISSetupLocation</col>
 		<col def="S255">ISReleaseFlags</col>
-		<row><td>_AE999132_4A94_45AF_9BC6_E0B878388153_</td><td>Microsoft .NET Framework 4.0 Client (Web Download).prq</td><td/><td/><td/></row>
+		<row><td>_AE999132_4A94_45AF_9BC6_E0B878388153_</td><td>Microsoft .NET Framework 4.0 Client (Web Download).prq</td><td/><td>2</td><td/></row>
 	</table>
 
 	<table name="ISSetupType">
@@ -2613,7 +2619,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>OUHSC Department of Family and Preventive Medicine</td><td>0</td><td/><td>-1507493198</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>OUHSC Department of Family and Preventive Medicine</td><td>0</td><td/><td>-1507505102</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>-1507486191</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>-1507486191</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40CLIENT</td><td>1033</td><td>Microsoft .NET Framework 4.0 Client Package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-1507486990</td></row>
@@ -3717,13 +3723,15 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>-1507486191</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>-1507486191</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>-1507486191</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://www.OUHSCDepartmentofFamilyandPreventiveMedicine.com</td><td>0</td><td/><td>-1507493198</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>OUHSC Department of Family and Preventive Medicine</td><td>0</td><td/><td>-1507493198</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://www.OUHSCDepartmentofFamilyandPreventiveMedicine.com</td><td>0</td><td/><td>-1507505102</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>OUHSC Department of Family and Preventive Medicine</td><td>0</td><td/><td>-1507505102</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-1507490223</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>Contact:  Rob Hamm - https://www.oumedicine.com/familymedicine</td><td>0</td><td/><td>-1507516270</td></row>
 		<row><td>ID_STRING5</td><td>1033</td><td>Balance Beam Decision Aid</td><td>0</td><td/><td>-1507481454</td></row>
-		<row><td>ID_STRING6</td><td>1033</td><td>http://journals.sagepub.com/doi/abs/10.1177/0272989X14529623</td><td>0</td><td/><td>-1507493198</td></row>
+		<row><td>ID_STRING6</td><td>1033</td><td>http://journals.sagepub.com/doi/abs/10.1177/0272989X14529623</td><td>0</td><td/><td>-1507505102</td></row>
 		<row><td>ID_STRING7</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-1507524174</td></row>
+		<row><td>ID_STRING8</td><td>1033</td><td>A Balance Beam Aid for Instruction in Clinical Diagnostic Reasoning</td><td>0</td><td/><td>-1507492974</td></row>
+		<row><td>ID_STRING9</td><td>1033</td><td>A Balance Beam Aid for Instruction in Clinical Diagnostic Reasoning</td><td>0</td><td/><td>-1507478638</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>-1507486191</td></row>
 	</table>
 
@@ -3953,8 +3961,8 @@
 		<col def="S0">Value</col>
 		<row><td>ActiveLanguage</td><td>1033</td></row>
 		<row><td>Comments</td><td/></row>
-		<row><td>CurrentMedia</td><td dt:dt="bin.base64" md5="de9f554a3bc05c12be9c31b998217995">
-UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
+		<row><td>CurrentMedia</td><td dt:dt="bin.base64" md5="a4f66fafb30885f14d732b73e196bba0">
+RABWAEQALQA1AAEARQB4AHAAcgBlAHMAcwA=
 			</td></row>
 		<row><td>DefaultProductConfiguration</td><td>Express</td></row>
 		<row><td>EnableSwidtag</td><td>1</td></row>
@@ -3971,7 +3979,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{2E01745C-BF28-4ECC-8084-855BEBCAEE64}</td></row>
 		<row><td>ISUSSignature</td><td>{918CE5D2-7004-4939-A8C4-58BD8097E2A1}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewProject,viewUpgradePaths,viewUpdateService,viewAppFiles,viewObjects,viewShortcuts,viewEnvironmentVariables,viewVRoots,viewServices,viewUI,viewISToday,viewRelease,viewCustomActions,viewSystemSearch,viewTextMessages</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewProject,viewUpgradePaths,viewUpdateService,viewAppFiles,viewObjects,viewShortcuts,viewEnvironmentVariables,viewVRoots,viewServices,viewUI,viewISToday,viewRelease,viewCustomActions,viewSystemSearch,viewTextMessages,viewFileExtensions,viewIniFiles,viewRegistry</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4515,8 +4523,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>_Built</td><td>balanc_1_balance_beam</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>BalanceBeamGui.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>BalanceBeamGui.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>_Built</td><td>balanc_1_balance_beam</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>BalanceBeamGui.Primary_output</td><td>AlwaysInstall</td><td/><td>##ID_STRING8##</td><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td>http://journals.sagepub.com/doi/abs/10.1177/0272989X14529623</td><td/><td/></row>
+		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>BalanceBeamGui.Primary_output</td><td>AlwaysInstall</td><td/><td>##ID_STRING9##</td><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td>http://journals.sagepub.com/doi/abs/10.1177/0272989X14529623</td><td/><td/></row>
 	</table>
 
 	<table name="Signature">
