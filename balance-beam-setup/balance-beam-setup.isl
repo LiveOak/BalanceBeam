@@ -225,7 +225,7 @@
 	<table name="AppSearch">
 		<col key="yes" def="s72">Property</col>
 		<col key="yes" def="s72">Signature_</col>
-		<row><td>DOTNETVERSION40FULL</td><td>DotNet40Full</td></row>
+		<row><td>DOTNETVERSION40CLIENT</td><td>DotNet40Client</td></row>
 	</table>
 
 	<table name="BBControl">
@@ -921,7 +921,7 @@
 		<row><td>DatabaseFolder</td><td>ChangeFolder</td><td>SpawnDialog</td><td>InstallChangeFolder</td><td>1</td><td>1</td></row>
 		<row><td>DatabaseFolder</td><td>ChangeFolder</td><td>[_BrowseProperty]</td><td>DATABASEDIR</td><td>1</td><td>2</td></row>
 		<row><td>DatabaseFolder</td><td>Next</td><td>NewDialog</td><td>SetupType</td><td>1</td><td>1</td></row>
-		<row><td>DestinationFolder</td><td>Back</td><td>NewDialog</td><td>CustomerInformation</td><td>1</td><td>0</td></row>
+		<row><td>DestinationFolder</td><td>Back</td><td>NewDialog</td><td>InstallWelcome</td><td>NOT Installed</td><td>0</td></row>
 		<row><td>DestinationFolder</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>1</td></row>
 		<row><td>DestinationFolder</td><td>ChangeFolder</td><td>SpawnDialog</td><td>InstallChangeFolder</td><td>1</td><td>1</td></row>
 		<row><td>DestinationFolder</td><td>ChangeFolder</td><td>[_BrowseProperty]</td><td>INSTALLDIR</td><td>1</td><td>2</td></row>
@@ -938,7 +938,7 @@
 		<row><td>InstallChangeFolder</td><td>Up</td><td>DirectoryListUp</td><td>0</td><td>1</td><td>0</td></row>
 		<row><td>InstallWelcome</td><td>Back</td><td>NewDialog</td><td>SplashBitmap</td><td>Display_IsBitmapDlg</td><td>0</td></row>
 		<row><td>InstallWelcome</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>0</td></row>
-		<row><td>InstallWelcome</td><td>Next</td><td>NewDialog</td><td>ReadyToInstall</td><td>1</td><td>0</td></row>
+		<row><td>InstallWelcome</td><td>Next</td><td>NewDialog</td><td>DestinationFolder</td><td>1</td><td>0</td></row>
 		<row><td>LicenseAgreement</td><td>Back</td><td>NewDialog</td><td>InstallWelcome</td><td>1</td><td>0</td></row>
 		<row><td>LicenseAgreement</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>0</td></row>
 		<row><td>LicenseAgreement</td><td>ISPrintButton</td><td>DoAction</td><td>ISPrint</td><td>1</td><td>0</td></row>
@@ -973,7 +973,7 @@
 		<row><td>ReadmeInformation</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>1</td></row>
 		<row><td>ReadmeInformation</td><td>Next</td><td>NewDialog</td><td>CustomerInformation</td><td>1</td><td>1</td></row>
 		<row><td>ReadyToInstall</td><td>Back</td><td>NewDialog</td><td>CustomSetup</td><td>Installed OR _IsSetupTypeMin = "Custom"</td><td>2</td></row>
-		<row><td>ReadyToInstall</td><td>Back</td><td>NewDialog</td><td>InstallWelcome</td><td>NOT Installed</td><td>1</td></row>
+		<row><td>ReadyToInstall</td><td>Back</td><td>NewDialog</td><td>DestinationFolder</td><td>NOT Installed</td><td>1</td></row>
 		<row><td>ReadyToInstall</td><td>Back</td><td>NewDialog</td><td>MaintenanceType</td><td>Installed AND _IsMaintenance = "Reinstall"</td><td>3</td></row>
 		<row><td>ReadyToInstall</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>0</td></row>
 		<row><td>ReadyToInstall</td><td>InstallNow</td><td>EndDialog</td><td>Return</td><td>OutOfNoRbDiskSpace &lt;&gt; 1</td><td>0</td></row>
@@ -2579,6 +2579,7 @@
 		<col def="I2">Order</col>
 		<col def="I2">ISSetupLocation</col>
 		<col def="S255">ISReleaseFlags</col>
+		<row><td>_AE999132_4A94_45AF_9BC6_E0B878388153_</td><td>Microsoft .NET Framework 4.0 Client (Web Download).prq</td><td/><td/><td/></row>
 	</table>
 
 	<table name="ISSetupType">
@@ -2612,10 +2613,10 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>OUHSC Department of Family and Preventive Medicine</td><td>0</td><td/><td>-1507495790</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>OUHSC Department of Family and Preventive Medicine</td><td>0</td><td/><td>-1507493198</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>-1507486191</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>-1507486191</td></row>
-		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40CLIENT</td><td>1033</td><td>Microsoft .NET Framework 4.0 Client Package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-1507482063</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40CLIENT</td><td>1033</td><td>Microsoft .NET Framework 4.0 Client Package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-1507486990</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40FULL</td><td>1033</td><td>Microsoft .NET Framework 4.0 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-1507471695</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1033</td><td>The operating system is not adequate for running [ProductName].</td><td>0</td><td/><td>-1507486191</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>-1507486191</td></row>
@@ -3427,7 +3428,7 @@
 		<row><td>IDS_SETUPEXE_EXPIRE_MSG</td><td>1033</td><td>This setup works until %s. The setup will now exit.</td><td>0</td><td/><td>-1507486191</td></row>
 		<row><td>IDS_SETUPEXE_LAUNCH_COND_E</td><td>1033</td><td>This setup was built with an evaluation version of InstallShield and can only be launched from setup.exe.</td><td>0</td><td/><td>-1507486191</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-1507494319</td></row>
-		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-1507512655</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>Balance Beam - OUHSC Family Med</td><td>0</td><td/><td>-1507501646</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>-1507486191</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>-1507486191</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>-1507486191</td></row>
@@ -3716,12 +3717,13 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>-1507486191</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>-1507486191</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>-1507486191</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>https://www.oumedicine.com/familymedicine/academic-information/research/research-faculty</td><td>0</td><td/><td>-1507522414</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>Ouhsc Family Med</td><td>0</td><td/><td>-1507486191</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://www.OUHSCDepartmentofFamilyandPreventiveMedicine.com</td><td>0</td><td/><td>-1507493198</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>OUHSC Department of Family and Preventive Medicine</td><td>0</td><td/><td>-1507493198</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-1507490223</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>Contact:  Rob Hamm - https://www.oumedicine.com/familymedicine</td><td>0</td><td/><td>-1507516270</td></row>
 		<row><td>ID_STRING5</td><td>1033</td><td>Balance Beam Decision Aid</td><td>0</td><td/><td>-1507481454</td></row>
-		<row><td>ID_STRING6</td><td>1033</td><td>http://journals.sagepub.com/doi/abs/10.1177/0272989X14529623</td><td>0</td><td/><td>-1507469134</td></row>
+		<row><td>ID_STRING6</td><td>1033</td><td>http://journals.sagepub.com/doi/abs/10.1177/0272989X14529623</td><td>0</td><td/><td>-1507493198</td></row>
+		<row><td>ID_STRING7</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>-1507524174</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>-1507486191</td></row>
 	</table>
 
@@ -3969,7 +3971,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{2E01745C-BF28-4ECC-8084-855BEBCAEE64}</td></row>
 		<row><td>ISUSSignature</td><td>{918CE5D2-7004-4939-A8C4-58BD8097E2A1}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewProject</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewProject,viewUpgradePaths,viewUpdateService,viewAppFiles,viewObjects,viewShortcuts,viewEnvironmentVariables,viewVRoots,viewServices,viewUI,viewISToday,viewRelease,viewCustomActions,viewSystemSearch,viewTextMessages</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4027,7 +4029,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 	<table name="LaunchCondition">
 		<col key="yes" def="s255">Condition</col>
 		<col def="l255">Description</col>
-		<row><td>DOTNETVERSION40FULL&gt;="#1"</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40FULL##</td></row>
+		<row><td>DOTNETVERSION40CLIENT&gt;="#1"</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40CLIENT##</td></row>
 	</table>
 
 	<table name="ListBox">
@@ -4361,7 +4363,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>SERIALNUMBER</td><td/><td/></row>
 		<row><td>SERIALNUMVALSUCCESSRETVAL</td><td>1</td><td/></row>
 		<row><td>SHOWLAUNCHPROGRAM</td><td>-1</td><td/></row>
-		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;DOTNETVERSION40FULL</td><td/></row>
+		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;DOTNETVERSION40CLIENT</td><td/></row>
 		<row><td>SelectedSetupType</td><td>##IDS__DisplayName_Typical##</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
 		<row><td>UpgradeCode</td><td>{1023F4C2-24A3-40BE-8BA7-65E7D11F32CA}</td><td/></row>
@@ -4406,7 +4408,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="s255">Key</col>
 		<col def="S255">Name</col>
 		<col def="I2">Type</col>
-		<row><td>DotNet40Full</td><td>2</td><td>SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full</td><td>Install</td><td>2</td></row>
+		<row><td>DotNet40Client</td><td>2</td><td>SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client</td><td>Install</td><td>2</td></row>
 	</table>
 
 	<table name="Registry">
@@ -4514,6 +4516,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
 		<row><td>_Built</td><td>balanc_1_balance_beam</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>BalanceBeamGui.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>BalanceBeamGui.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
